@@ -32,6 +32,13 @@ class FortifyServiceProvider extends ServiceProvider
     public function boot()
     {
         Fortify::loginView('auth.login');
+
+        Fortify::authenticateUsing(function(Request $request){
+            $docente = Docente::where('email', $request->email)->first();
+            Hash::check($request->docente, $docente->password);
+            return $docente;
+        });
+
         Fortify::createUsersUsing(CreateNewUser::class);
         Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
         Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);

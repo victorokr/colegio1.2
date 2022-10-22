@@ -1,0 +1,379 @@
+// Fonts
+//@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+//@import 'variables';
+
+// Bootstrap
+
+
+
+
+.navbar {
+	margin-bottom: -23px; //reduce el margen inferior, pega el navbar al carousel
+	//max-height: 60px; //controla el ancho del navbar
+}
+
+//pega el menu al borde izquierdo y alinea li ul a
+* {
+	margin: 0;	
+	padding: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+/* The sidebar menu */
+.sidebar {
+	height: 100%; /* 100% Full-height */
+	width: 0; /* 0 width - change this with JavaScript */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Stay on top */
+	top: 0;
+	left: 0;
+	background-color: #111; /* Black*/
+	overflow-x: hidden; /* Disable horizontal scroll */
+	padding-top: 60px; /* Place content 60px from the top */
+	transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+  }
+
+  /* The sidebar links */
+.sidebar a {
+	//padding: 4px 4px 4px 0px;
+	text-decoration: none; //quita el subrayado del texto
+	font-size: 13px;
+	color: #818181; //color del texto del menu
+	display: block;
+	transition: 0.3s;
+	font-family: 'Roboto', sans-serif; //tipo de letra
+	line-height: 14px; //espaciado entre links
+	
+  }
+
+  /* When you mouse over the navigation links, change their color */
+.sidebar a:hover {
+	color: #f1f1f1;
+  }
+
+
+  /* Position and style the close button (top right corner) */
+.sidebar .closebtn {
+	position: absolute;
+	top: 0;
+	right: 5px;
+	font-size: 36px;
+	margin-left: 50px;
+	margin-top: 15px;
+  }
+
+
+  /* The button used to open the sidebar */
+.openbtn {
+	font-size: 20px;
+	cursor: pointer;
+	background-color: #003f79;
+	color: white;
+	padding: 0px 5px;
+	border: none;
+  }
+
+  .openbtn:hover {
+	background-color: #f0ffee;
+  }
+
+  /* Style page content - use this if you want to push the page content to the right when you open the side navigation, crea un margen al lado y lado del navbar, se comento por eso */
+// #app {
+// 	transition: margin-left .5s; /* If you want a transition effect */
+// 	padding: 20px;
+//   }
+  
+  /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+  @media screen and (max-height: 450px) {
+	.sidebar {padding-top: 15px;}
+	.sidebar a {font-size: 18px;}
+  }
+
+
+  //menu interno antiguo jquery
+  .sidebar .btn-menu { //para dispositivos moviles
+	display: none; //ancho del boton
+	padding: 20px; //altura del btn menu
+	background: #0d2c44; //color del marco del boton
+	color: #fff; //color blanco
+  }
+
+  .sidebar .btn-menu .icono{
+	float: right; //icono a la derecha
+  }
+
+  .sidebar ul { //quita las viñetas
+	list-style: none;
+}
+
+
+.sidebar .menu li a { 
+	//color: #474747; //color letra
+	//display: block;
+	//position: absolute;
+	//height: 100%;
+	padding: 19px 15px; //espacio entre lineas y espacio del borde
+	//margin-left: -40px;//pega la letra del menu al borde izquierdo
+	//background: #f7f7f7;//color fondo menu
+	//white-space: pre;
+}
+
+//hover de etiquetas li y a
+.sidebar .menu li a:hover { 
+	background: #1a95d5;
+	color: #fff;
+}
+
+//icono
+.sidebar .menu .icono { 
+	font-size: 13px; //tamaño de los iconos del menu
+	line-height: 20px;
+}
+
+//icono izquierda, espacio entre el texto
+.sidebar .menu .icono.izquierda { 
+	float: left;
+	margin-right: 10px;
+}
+
+//icono derecha, espacio entre el texto
+.sidebar .menu .icono.derecha{ 
+	float: right;
+	margin-left: 10px;
+}
+
+//quita los submenu
+.sidebar .menu ul {
+	display: none;
+	//margin-left: -55px;//ancho izquierda del sub menu, color blanco
+}
+
+.sidebar .menu ul li a {
+	background: #f8fffd; //color del submenu
+	color: #000102;//color letra del sub menu
+}
+
+//adapta el menu a dispositivos moviles
+@media screen and (max-width: 450px) {
+	body {
+		padding-top: 80px;
+	}
+
+	.sidebar {
+		margin: 0;
+		width: 100%;
+		position: fixed;
+		top: 0;
+		z-index: 1000;
+	}
+
+	.btn-menu {
+		display: block;
+	}
+
+	.sidebar .menu {
+		display: none;
+	}
+}
+
+ 
+//icono card header
+.container-global .card .card-header .icono { 
+	font-size: 20px; //tamaño del icono 
+	//line-height: 20px;
+	
+}
+
+//tamaño letra card-header 
+.container-global .card .card-header { 
+	font-weight: 530; //negrita
+	font-size: 15px; //tamaño de la letra
+	//font-family: 'Roboto', sans-serif; //tipo de letra
+	//text-transform: capitalize;
+
+}
+
+body{
+
+	
+	background-color: #ebe6eb;
+	font-family: 'Roboto', sans-serif; //tipo de letra
+	line-height: 18px; //espacio entre lineas de texto 
+
+	// background-image: url("/images/fondoCol.png");
+	// background-size: 100% 100%;
+	// background-position: center center;
+	// background-repeat: no-repeat;
+	// height: 100vh;
+	// width: 100%;
+
+	
+}
+
+
+.container-global .card .card-body .table{
+	width: 155%; //ancho de la tabla
+    text-transform: capitalize;
+	font-size: 14px;
+}
+
+
+//pega el boton a la derecha de la linea de la tabla
+.container-global .card-body .table .btn.editar {
+	margin-left: -8px; 
+}
+
+//pega el label al input
+.container-global .card-body label {
+	margin-bottom: -10px; 
+	font : .8em "typewriter", sans-serif;
+}
+
+
+.error{
+	color: red;
+	font-size: 12px;
+
+}
+
+
+
+//parsley library validation
+input.parsley-success,
+  select.parsley-success,
+  textarea.parsley-success {
+    color: #468847;
+    background-color: #DFF0D8;
+    border: 1px solid #D6E9C6;
+  }
+
+  input.parsley-error,
+  select.parsley-error,
+  textarea.parsley-error {
+    color: #B94A48;
+    background-color: #F2DEDE;
+    border: 1px solid #EED3D7;
+  }
+
+  .parsley-errors-list {
+    margin: 2px 0 3px;
+    padding: 0;
+    list-style-type: none;
+    font-size: 0.9em;
+    line-height: 0.9em;
+    opacity: 0;
+
+    transition: all .3s ease-in;
+    -o-transition: all .3s ease-in;
+    -moz-transition: all .3s ease-in;
+    -webkit-transition: all .3s ease-in;
+  }
+
+  .parsley-errors-list.filled {
+    opacity: 1;
+  }
+  
+  .parsley-type, .parsley-required, .parsley-equalto, .parsley-minlength, .parsley-maxlength, .parsley-pattern, .parsley-length{
+   color:#ff0000;
+  }
+
+
+
+  //select2 css para el responsive #myselect
+  .select2 {
+	width:100%!important;
+	}
+
+
+
+
+
+
+
+
+
+
+
+//container angosto
+	//icono card header
+.container-angosto .card .card-header .icono { 
+	font-size: 20px; //tamaño del icono 
+	//line-height: 20px;
+	
+}
+
+//tamaño letra card-header 
+.container-angosto .card .card-header { 
+	font-weight: 530; //negrita
+	font-size: 15px; //tamaño de la letra
+	//font-family: 'Roboto', sans-serif; //tipo de letra
+	//text-transform: capitalize;
+
+}
+
+
+
+.container-angosto .card .card-body .table{
+	width: 100%; //ancho de la tabla
+    text-transform: capitalize;
+	font-size: 14px;
+}
+
+
+//pega el boton a la derecha de la linea de la tabla
+.container-angosto .card-body .table .btn.editar {
+	margin-left: -8px; 
+}
+
+//pega el label al input
+.container-angosto .card-body label {
+	margin-bottom: -10px; 
+	font : .8em "typewriter", sans-serif;
+}
+
+//requiere input, asterisco rojo
+.asterisko:after {
+    content:" *";
+	color: red;
+	font-size: 17px;
+  }
+  
+  
+
+.container-cssform  {
+
+	/* Centrar el formulario en la página */
+	margin: 0 auto;
+	width: 100%;
+	border-radius: 1em;
+	border: 1px solid #CCC; 
+	background-color:#fafafa;
+	padding: 1em;
+}
+
+
+//form con borde
+//form {
+	/* Centrar el formulario en la página */
+	//margin: 0 auto;
+	//width: 400px;
+	/* Esquema del formulario */
+	//padding: 1em;
+	//border: 1px solid #CCC;
+	//border-radius: 1em;
+  //}
+
+
+  .contenedorimg { 
+	background-image: url("/images/fondoCol.png");
+	background-size: 100% 100%;
+	background-position: center center;
+	background-repeat: no-repeat;
+	position: absolute;
+	height: 100vh;
+	width: 100%;
+}
