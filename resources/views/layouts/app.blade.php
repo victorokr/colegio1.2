@@ -75,9 +75,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}"><i class="fas fa-user-friends"></i> {{ __('Docentes') }}</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('mensajes.create') }}"><i class="fas fa-envelope-open-text"></i> {{ __('Contacto') }}</a>
-                            </li>
+                           
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('acudientes/login') }}"><i class="fas fa-sign-in-alt"></i> {{ __('Acceso Acudientes') }}</a>
                             </li>

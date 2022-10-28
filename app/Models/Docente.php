@@ -10,6 +10,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 // use Illuminate\Database\Eloquent\Model;
 use Laravel\Sanctum\HasApiTokens;
 
+
+
+
 class Docente extends Authenticatable
 {
     
@@ -48,18 +51,17 @@ class Docente extends Authenticatable
 
 
 
-    /**
+   /**
      * Send the password reset notification.
      *
      * @param  string  $token
      * @return void
      */
-
-
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new ResetPasswordNotificationEs($token));
     }
+
 
 
      public function setPasswordAttribute($password)//modifica el password encriptandolo
@@ -96,28 +98,28 @@ class Docente extends Authenticatable
 
     public function roles()
     {
-        return $this->belongsToMany('App\Role','docente_role','id_docente','id_role');
+        return $this->belongsToMany('App\Models\Role','docente_role','id_docente','id_role');
     }
 
 
     public function gradoEscalafon()
     {
-        return $this->belongsTo('App\Gradoescalafon','id_escalafon');
+        return $this->belongsTo('App\Models\Gradoescalafon','id_escalafon');
     }
 
     public function areaDeEstudio()
     {
-        return $this->belongsToMany('App\Areadeestudio','Areadeestudio_docente','id_docente','id_areaDeEstudio');
+        return $this->belongsToMany('App\Models\Areadeestudio','Areadeestudio_docente','id_docente','id_areaDeEstudio');
     }
 
     public function perfil()
     {
-        return $this->belongsTo('App\Perfil','id_perfil');
+        return $this->belongsTo('App\Models\Perfil','id_perfil');
     }
 
     public function nivel()
     {
-        return $this->belongsTo('App\Nivel','id_nivel');
+        return $this->belongsTo('App\Models\Nivel','id_nivel');
     }
 
 

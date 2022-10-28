@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
+        'guard' => 'docente',
         'passwords' => 'users',
     ],
 
@@ -36,10 +36,21 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        'docente' => [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+
+
+        'acudiente' => [
+            'driver' => 'session',
+            'provider' => 'acudientes',
+        ],
+
+
+
+
     ],
 
     /*
@@ -62,13 +73,24 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\Docente::class,
         ],
 
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
+
+
+
+        'acudientes' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Responsable::class,
+        ],
+
+
+
+
     ],
 
     /*
@@ -93,6 +115,20 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+
+
+
+        'acudiente' => [
+            'provider' => 'acudientes',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
+
+
+
+
     ],
 
     /*

@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Fortify\Fortify;
 
+use App\Models\Docente;
+use Illuminate\Support\Facades\Hash;
+use Laravel\Fortify\Features;
+
+
 class FortifyServiceProvider extends ServiceProvider
 {
     /**
@@ -21,7 +26,7 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        
     }
 
     /**
@@ -32,12 +37,9 @@ class FortifyServiceProvider extends ServiceProvider
     public function boot()
     {
         Fortify::loginView('auth.login');
+        Fortify::requestPasswordResetLinkView('auth.forgot-password');
 
-        Fortify::authenticateUsing(function(Request $request){
-            $docente = Docente::where('email', $request->email)->first();
-            Hash::check($request->docente, $docente->password);
-            return $docente;
-        });
+        
 
         Fortify::createUsersUsing(CreateNewUser::class);
         Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
@@ -53,5 +55,16 @@ class FortifyServiceProvider extends ServiceProvider
         RateLimiter::for('two-factor', function (Request $request) {
             return Limit::perMinute(5)->by($request->session()->get('login.id'));
         });
+
+
+
+
+
+
+
+
+
+
+
     }
 }
