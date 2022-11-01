@@ -64,10 +64,10 @@ class Docente extends Authenticatable
 
 
 
-     public function setPasswordAttribute($password)//modifica el password encriptandolo
-    {
-        $this->attributes['password']=bcrypt($password);
-    }
+    //  public function setPasswordAttribute($password)//modifica el password encriptandolo
+    // {
+    //     $this->attributes['password']=bcrypt($password);
+    // }
 
 
 
