@@ -139,7 +139,22 @@ class DocenteController extends Controller
         
 
         else{
-        $listaDocentes  ->update($request->all());
+        //$listaDocentes  ->update($request->all());
+        $listaDocentes->nombres = $request->input('nombres');
+        $listaDocentes->documento = $request->input('documento');
+        $listaDocentes->telefono = $request->input('telefono');
+        $listaDocentes->direccion = $request->input('direccion');
+        $listaDocentes->email = $request->input('email');
+        $listaDocentes->password = bcrypt( $request->input('password'));
+        $listaDocentes->lugarDeResidencia = $request->input('lugarDeResidencia');
+        $listaDocentes->id_perfil = $request->input('id_perfil');
+        $listaDocentes->id_nivel = $request->input('id_nivel');
+        $listaDocentes->id_escalafon = $request->input('id_escalafon');
+        $listaDocentes->save();
+
+        $listaDocentes->roles()->sync($request->roles);
+        $listaDocentes->areaDeEstudio()->sync($request->areaDeEstudio);
+
         Alert::toast('Docente actualizado', 'success')->timerProgressBar();
         return redirect()->route('docente.index');
         }

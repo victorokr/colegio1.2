@@ -13,7 +13,7 @@ use Illuminate\Support\ServiceProvider;
 use Laravel\Fortify\Fortify;
 
 use App\Models\Docente;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Hash;//autenticacion manual opcional
 use Laravel\Fortify\Features;
 
 
