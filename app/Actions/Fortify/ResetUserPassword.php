@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\ResetsUserPasswords;
 
+use RealRashid\SweetAlert\Facades\Alert;
+
 class ResetUserPassword implements ResetsUserPasswords
 {
     use PasswordValidationRules;
@@ -26,5 +28,8 @@ class ResetUserPassword implements ResetsUserPasswords
         $user->forceFill([
             'password' => Hash::make($input['password']),
         ])->save();
+
+        Alert::success('Su contraseña ha cambiado exitosamente, por favor inicia sesíon', 'success')->timerProgressBar();
+
     }
 }

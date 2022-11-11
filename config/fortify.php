@@ -144,4 +144,10 @@ return [
         ]),
     ],
 
+
+    //se agregó opcional
+    // 'redirects' => [
+    //     'logout' => 'acudientes/login',
+    // ],
+
 ];

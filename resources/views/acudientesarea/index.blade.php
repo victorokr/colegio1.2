@@ -22,13 +22,15 @@
                     <div class="card-header"><small class="text-muted">Bienvenido</small></div>
 
                     <div class="card-body ">
-                        @if (session('status'))
+                        <!-- @if (session('status'))
                             <div class="alert alert-success" role="alert">
                                 {{ session('status') }}
                                 {{ Auth::user()->nombres }}
                                 {{ Auth::user()->apellidos }}
                             </div>
-                        @endif 
+                        @endif -->
+                        {{ Auth::user()->nombres }}
+                        {{ Auth::user()->apellidos }} 
                     </div>
                 </div>
             </div>

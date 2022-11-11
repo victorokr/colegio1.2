@@ -4,7 +4,10 @@ namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use App\Notifications\AcudientesResetPasswordNotification;
+use App\Notifications\ResetPasswordNotificationEs;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Laravel\Sanctum\HasApiTokens;
 
 class Responsable extends Authenticatable
 {
@@ -17,16 +20,15 @@ class Responsable extends Authenticatable
     'direccion','email','lugarDeResidencia','password','id_parentesco','id_tipoDocumento'];
 
 
-    /**
+   /**
      * Send the password reset notification.
      *
      * @param  string  $token
      * @return void
      */
-
     public function sendPasswordResetNotification($token)
     {
-        $this->notify(new AcudientesResetPasswordNotification($token));
+        $this->notify(new ResetPasswordNotificationEs($token));
     }
 
 
@@ -60,7 +62,7 @@ class Responsable extends Authenticatable
     }
 
 
-
+    //se deshabilito porque fortify encripta por si mismo y al encriptar aqui por segunda vez, no se puede iniciar sesion
     // public function setPasswordAttribute($password)//modifica el password encriptandolo
     // {
     //     $this->attributes['password']=bcrypt($password);
