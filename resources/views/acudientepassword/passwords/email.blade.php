@@ -1,4 +1,4 @@
-@extends('layouts.app')
+<!-- @extends('layouts.app')
 
 @section('content')
 
@@ -14,14 +14,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <!-- @if (session()->has('messagePassword'))
-                        <div class="alert alert-primary mt-1 text-center" style="width: 900px" id="alerta" >
-                            <strong>Aviso: </strong>{{ session('messagePassword') }}
-                            <button type="button" class="close" data-dismiss="alert" arial-label="cerrar" >
-                            <span arial-hidden="true"> &times; </span>
-                            </button>
-                        </div>
-		            @endif -->
+                   
 
                     <form method="POST" action="{{ route('acudiente.password.email') }}">
                         @csrf
@@ -53,4 +46,4 @@
         </div>
     </div>
 </div>
-@endsection
+@endsection -->

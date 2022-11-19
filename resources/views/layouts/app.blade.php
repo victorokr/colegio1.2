@@ -73,12 +73,10 @@
                                 <a class="nav-link" href="{{ route('home') }}"><i class="fas fa-home"></i> {{ __('Home') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}"><i class="fas fa-user-friends"></i> {{ __('Docentes') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i> {{ __('Iniciar Sesíon') }}</a>
                             </li>
                            
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ url('acudientes/login') }}"><i class="fas fa-sign-in-alt"></i> {{ __('Acceso Acudientes') }}</a>
-                            </li>
+                           
                             
                             
                         @else

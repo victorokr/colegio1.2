@@ -44,11 +44,11 @@ class AcudienteResetPasswordController extends Controller
 
     public function rules()//Se saco del traid use ResetsPasswords
     {
-        return [
-            'token' => 'required',
-            'email' => 'required|email',
-            'password'=> 'required|confirmed|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/|min:5|max:20',//debe contener un numero, minuscula y mayuscula
-        ];
+        // return [
+        //     'token' => 'required',
+        //     'email' => 'required|email',
+        //     'password'=> 'required|confirmed|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/|min:5|max:20',//debe contener un numero, minuscula y mayuscula
+        // ];
     }
 
     /**
@@ -62,9 +62,9 @@ class AcudienteResetPasswordController extends Controller
      */
     public function showResetForm(Request $request, $token = null)
     {
-        return view('acudientepassword.passwords.reset')->with(
-            ['token' => $token, 'email' => $request->email]
-        );
+        // return view('acudientepassword.passwords.reset')->with(
+        //     ['token' => $token, 'email' => $request->email]
+        // );
     }
 
 
@@ -73,17 +73,17 @@ class AcudienteResetPasswordController extends Controller
 
     protected function resetPassword($user, $password)//Se saco del traid use ResetsPasswords
     {
-        $user->password = Hash::make($password);
+        // $user->password = Hash::make($password);
 
-        $user->setRememberToken(Str::random(60));
+        // $user->setRememberToken(Str::random(60));
 
-        $user->save();
+        // $user->save();
 
-        event(new PasswordReset($user));
+        // event(new PasswordReset($user));
 
         //$this->guard()->login($user);//evita iniciar sesion despues de resetear contraseña al estar comentado
 
-        return back()->with('infoContraseña','Tu contraseña se ha actualizado, por favor inicia sesion'); 
+        //return back()->with('infoContraseña','Tu contraseña se ha actualizado, por favor inicia sesion'); 
     }
 
 
@@ -94,7 +94,7 @@ class AcudienteResetPasswordController extends Controller
      */
     public function broker()
     {
-        return Password::broker('acudiente');
+        //return Password::broker('acudiente');
     }
 
     /**
@@ -104,7 +104,7 @@ class AcudienteResetPasswordController extends Controller
      */
     protected function guard()
     {
-        return Auth::guard('acudiente');
+        //return Auth::guard('acudiente');
     }
 
 

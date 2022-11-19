@@ -1,4 +1,4 @@
-@extends('layouts.app')
+<!-- @extends('layouts.app')
 
 @section('content')
 
@@ -24,8 +24,8 @@
                 <div class="card-header text-center text-muted">{{ __('AccesoAcudientes') }}</div>
 
                 <div class="card-body">
-                <!-- {{ url('/acudientes/login') }} -->
-                    <form method="POST" action="{{ route('login') }}"> 
+               
+                    <form method="POST" action="{{ url('/acudientes/login') }}"> 
                         @csrf
 
                         <div class="form-group row">
@@ -87,4 +87,4 @@
         </div>
     </div>
 </div>
-@endsection
+@endsection -->

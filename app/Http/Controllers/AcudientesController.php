@@ -11,7 +11,7 @@ class AcudientesController extends Controller
 {
     public function showLoginForm()
     {
-        return view('acudientes.login');
+        //return view('acudientes.login');
     }
 
    
@@ -31,14 +31,14 @@ class AcudientesController extends Controller
     
     public function index()
     {
-        return view('acudiente');
+        //return view('acudiente');
     }
 
 
     public function authenticated()
     {
 
-    	return redirect('acudientesarea.index');
+    	//return redirect('acudientesarea.index');
     }
 
 
@@ -55,22 +55,22 @@ class AcudientesController extends Controller
 
     public function login(Request $request)
     {
-        $this->validator($request);
+        //$this->validator($request);
 
         //return $credentials;
         
-        if (Auth::guard('acudiente')->attempt($request->only('email','password'),$request->filled('remember'))) 
-        {   
+        // if (Auth::guard('acudiente')->attempt($request->only('email','password'),$request->filled('remember'))) 
+        // {   
 
-            request()->session()->regenerate();
+        //     request()->session()->regenerate();
 
-           return redirect()
-           ->intended(url('/acudientes/area'))
-           ->with('status','acudiente');
-        }
+        //    return redirect()
+        //    ->intended(url('/acudientes/area'))
+        //    ->with('status','acudiente');
+        // }
 
-        return back()
-        ->withErrors (['email' => trans('auth.failed')])
-        ->withInput (request(['email']));
+        // return back()
+        // ->withErrors (['email' => trans('auth.failed')])
+        // ->withInput (request(['email']));
     }
 }

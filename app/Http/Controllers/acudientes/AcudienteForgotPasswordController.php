@@ -47,7 +47,7 @@ class AcudienteForgotPasswordController extends Controller
      */
     public function showLinkRequestForm()
     {
-        return view('acudientepassword.passwords.email');
+        //return view('acudientepassword.passwords.email');
     }
 
 
