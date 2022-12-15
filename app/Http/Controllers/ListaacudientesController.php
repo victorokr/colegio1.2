@@ -10,6 +10,7 @@ use App\Models\Responsabledos;
 use App\Models\Ocupacion;
 use App\Http\Requests\CreateAcudienteRequest;
 use Illuminate\Validation\Rule;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ListaacudientesController extends Controller
 {
@@ -17,7 +18,8 @@ class ListaacudientesController extends Controller
     {
        $this->middleware('auth:docente'); 
 
-       $this->middleware('roles:Administrador', ['except' =>['edit','update']]);
+       $this->middleware('roles:Administrador');
+       //, ['except' =>['edit','update']]
     }
     
     /**
@@ -58,10 +60,22 @@ class ListaacudientesController extends Controller
      */
     public function store(CreateAcudienteRequest $request)
     {   //return $request->all();
-        $listaAcudientes = Responsable::create( $request->all() );
-        $listaAcudientes->ocupacion()->attach($request->ocupacion);
-        $listaAcudientes->roles()->attach(2);
-        return redirect()->route('acudientes.index', compact('listaAcudientes'))->with('infoCreate','Acudiente agregado');
+            $listaAcudientes = new Responsable;
+            $listaAcudientes->nombres   = $request->input('nombres');
+            $listaAcudientes->apellidos = $request->input('apellidos');
+            $listaAcudientes->documento = $request->input('documento');
+            $listaAcudientes->telefono  = $request->input('telefono');
+            $listaAcudientes->direccion = $request->input('direccion');
+            $listaAcudientes->email     = $request->input('email');
+            $listaAcudientes->lugarDeResidencia = $request->input('lugarDeResidencia');
+            $listaAcudientes->password          = bcrypt( $request->input('password')); 
+            $listaAcudientes->id_parentesco     = $request->input('id_parentesco');
+            $listaAcudientes->id_tipoDocumento  = $request->input('id_tipoDocumento');
+            $listaAcudientes->save();
+            $listaAcudientes->ocupacion()->attach($request->ocupacion);
+            $listaAcudientes->roles()->attach(2);
+        Alert::toast('Acudiente creado exitosamente', 'success')->timerProgressBar();
+        return redirect()->route('acudientes.index', compact('listaAcudientes'));
     }
 
     /**
@@ -102,8 +116,36 @@ class ListaacudientesController extends Controller
         $this->validate(request(), ['email' =>['required','email','max:50',Rule::unique('responsable')->ignore($id,'id_responsable')]]);
         $listaAcudientes        = Responsable::findOrFail($id);
         $listaAcudientes->ocupacion()->sync($request->ocupacion);
-        $listaAcudientes->update($request->all());
-        return back()->with('infoUpdate','Acudiente actualizado');
+
+        if (is_null($request->password)) {
+        $listaAcudientes->update($request->except('password'));
+        Alert::toast('Acudiente actualizado', 'success')->timerProgressBar();
+        return redirect()->route('acudientes.index');
+        }
+
+        else{
+            //$listaDocentes  ->update($request->all());
+            $listaAcudientes->nombres   = $request->input('nombres');
+            $listaAcudientes->apellidos = $request->input('apellidos');
+            $listaAcudientes->documento = $request->input('documento');
+            $listaAcudientes->telefono  = $request->input('telefono');
+            $listaAcudientes->direccion = $request->input('direccion');
+            $listaAcudientes->email     = $request->input('email');
+            $listaAcudientes->lugarDeResidencia = $request->input('lugarDeResidencia');
+            $listaAcudientes->password          = bcrypt( $request->input('password')); 
+            $listaAcudientes->id_parentesco     = $request->input('id_parentesco');
+            $listaAcudientes->id_tipoDocumento  = $request->input('id_tipoDocumento');
+            $listaAcudientes->save();
+    
+            Alert::toast('Acudiente actualizado', 'success')->timerProgressBar();
+            return redirect()->route('acudientes.index');
+            }
+
+
+
+
+
+
 
     }
 
@@ -117,6 +159,7 @@ class ListaacudientesController extends Controller
     {
         $listaAcudientes = Responsable::findOrFail($id);
         $listaAcudientes->delete();
-        return back()->with('infoDelete','Acudiente eliminado');
+        Alert::toast('Acudiente eliminado', 'success')->timerProgressBar();
+        return back();
     }
 }

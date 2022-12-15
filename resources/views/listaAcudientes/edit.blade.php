@@ -17,17 +17,26 @@
   </div>
 </div>
 
-<div class="container-global">
+<div class="container-angosto">
   <div class="card  mr-3 ml-0 mt-3">
-    <div class="card-header ">
-    <a><i class="icono fas fa-user-cog"></i> Editar Acudientes</a>
-    </div>
+    <div class="card-header text-center"><a><i class="icono fas fa-user-cog"></i> Editar Acudiente</a></div>
     <div class="card-body">
+      <div class="container-cssform">
         <form method="POST" action="{{ route('acudientes.update', $listaAcudientes->id_responsable) }}"  id="form">
             {!! method_field('PUT')!!}
-            @include('listaAcudientes.form')
-           
-        </form> 
+            {!!csrf_field() !!}
+                <div class="row justify-content-center">
+                  <div class=" col-md-6 col-sm-6 col-lg-4 mt-4">
+                    <div class="card">
+                        <div class="card-header text-center "> <small class="text-muted asterisko ">Obligatorio</small></div>
+                        <div class="card-body"> 
+                           @include('listaAcudientes.form')
+                        </div>   
+                    </div>       
+                  </div>         
+                </div>           
+        </form>
+      </div>   
     </div>
   </div>
 </div>

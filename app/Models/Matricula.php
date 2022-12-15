@@ -71,6 +71,14 @@ class Matricula extends Model
         });
     }
 
+    public function scopeAñoElectivo($query, $añoElectivo)
+    {
+        if($añoElectivo)
+        return $query->whereHas("añoElectivo", function ($query) use ($añoElectivo){
+            $query->where('añoElectivo','LIKE', "%$añoElectivo%");
+        });
+    }
+
     // public function scopeGrado($query, $grado)
     // {
     //     if($grado)
@@ -89,16 +97,26 @@ class Matricula extends Model
     {
         $fechaUpdatedMatricula = ($this->updated_at);
         $fechaCreatedMatricula = ($this->created_at);
-        $estadoDeLaMatricula   = ($this->id_estado);
+        $estadoDeLaMatricula   = ($this->id_estado);//2 = matriculado
 
         if($fechaUpdatedMatricula > $fechaCreatedMatricula and $estadoDeLaMatricula === 2){
-            return '2';
+            return '2'; //2 = antiguo
         }
         else{
             return '1';
         }
 
     }
+
+
+
+    // public function añoActual()
+    // {
+    //     $añoActual = date('Y');
+    //     return $añoActual;
+    // }
+
+
 
 
 }

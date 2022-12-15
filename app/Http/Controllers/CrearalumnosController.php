@@ -85,7 +85,7 @@ class CrearalumnosController extends Controller
           //dd($crearAlumno->id_alumno);
         //return redirect()->route('alumnosmatricula.show', compact('crearAlumno'))->with($crearAlumno->id_alumno);
         //return redirect()->route('alumnosmatricula.show', ['crearAlumno' => $crearAlumno->id_alumno]);
-        return redirect()->route('alumnosmatricula.show', [$crearAlumno]);
+        return redirect()->route('alumnosmatricula.show', [$crearAlumno]);//array pass the parameters to function show
         //return redirect()->route('alumnosmatricula.show')->with('crearAlumno', $crearAlumno->id_alumno);
     }
 
@@ -97,7 +97,9 @@ class CrearalumnosController extends Controller
      */
     public function show($alumnosmatricula  )
     {
-        $añoElectivoo           = Anioelectivo::pluck('añoElectivo','id_añoElectivo');
+        $añoActual = date('Y');
+        $añoElectivoo           = Anioelectivo::where('añoElectivo', '>=', $añoActual)->pluck('añoElectivo','id_añoElectivo');
+        //$añoElectivoo           = Anioelectivo::pluck('añoElectivo','id_añoElectivo');
         $gradoo                 = Grado::pluck('grado','id_grado');
         //$tipoDeAspirantee       = Tipodeaspirante::pluck('tipoDeAspirante','id_tipoDeAspirante');
         //$responsablee           = Responsable::pluck('nombres','id_responsable');

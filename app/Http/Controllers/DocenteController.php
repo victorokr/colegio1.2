@@ -170,6 +170,7 @@ class DocenteController extends Controller
     {
         $listaDocentes = Docente::findOrFail($id);
         $listaDocentes->delete();
-        return back()->with('infoDelete','Docente eliminado'); 
+        Alert::toast('Docente eliminado', 'success')->timerProgressBar();
+        return back(); 
     }
 }
