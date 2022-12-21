@@ -33,7 +33,7 @@ class ListaasignaturasController extends Controller
 
         $listaAsignaturas = Asignatura::orderBy('id_asignatura','DESC')
         ->consultaAsignatura($busquedaAsignatura)//consultaAsignatura es el nombre del metodo en el modelo, pero sin scope
-        ->paginate(8);
+        ->paginate(14);
         return view('asignaturas.index', compact('listaAsignaturas'));
     }
 

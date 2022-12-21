@@ -17,17 +17,24 @@
   </div>
 </div>
 
-<div class="container-global">
+<div class="container-angosto">
   <div class="card  mr-3 ml-0 mt-3">
-    <div class="card-header text-center">
-    <a><i class="fas fa-building"></i> Editar Curso</a>
-    </div>
+    <div class="card-header text-center"><a><i class="fas fa-building"></i> Editar Curso</a></div>
     <div class="card-body">
       <div class="container-cssform">
         <form method="POST" action="{{ route('cursos.update', $listaCursos->id_curso) }}"  id="form">
             {!! method_field('PUT')!!}
-            @include('listaCursos.form')
-           
+            {!!csrf_field() !!}
+            <div class="row justify-content-center">
+              <div class=" col-md-6 col-sm-6 col-lg-4 mt-4">
+                <div class="card">
+                  <div class="card-header text-center "> <small class="text-muted asterisko ">Obligatorio</small></div>
+                    <div class="card-body">
+                          @include('listaCursos.form')
+                    </div>   
+                </div>
+              </div>
+            </div>
         </form>
       </div>   
     </div>

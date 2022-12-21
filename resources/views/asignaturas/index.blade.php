@@ -11,12 +11,12 @@
           <form method="GET" action="{{ route('asignaturas.index') }}">
           
               <div class="row mt-1">
-                  <div class="col-sm">
-                      <input type="text" class="form-control mb-2" value="{{ request('asignatura')}}" id="prueba" name="asignatura" placeholder="Filtrar por asignatura">
+                  <div class="col-sm-2">
+                      <input type="text" class="form-control form-control-sm mb-2" value="{{ request('asignatura')}}" id="prueba" name="asignatura" placeholder="Filtrar por asignatura">
                   </div>
                   <div class="col-sm">
-                      <button type="submit" class="btn btn-primary mt-0 ml-0 mr-0 " data-tippy-content="Buscar"><i class="fas fa-search"></i></button>
-                      <a href="{{ url('lista/asignaturas') }}"   class="btn btn-light mt-0 ml-0 "data-tippy-content="restablecer"><i class="fas fa-reply"></i></a>
+                      <button type="submit" class="btn btn-primary btn-sm mt-0 ml-0 mr-0 " data-tippy-content="Buscar"><i class="fas fa-search"></i></button>
+                      <a href="{{ url('lista/asignaturas') }}"   class="btn btn-light btn-sm mt-0 ml-0 "data-tippy-content="restablecer"><i class="fas fa-reply"></i></a>
                   </div>
                   <div class="col-sm">
                   <a href="{{ url('lista/asignaturas/create') }}" class="btn btn-primary mt-0 ml-0 mr-0 btn-sm"style="float:right;"><i class="fas fa-plus-circle"></i> Crear Asignatura</a>
@@ -33,7 +33,7 @@
                 <tr>
                 <th scope="col">Acciones</th>
                 <th scope="col">Asignatura</th>
-                <th scope="col">logros</th>
+                <!-- <th scope="col">logros</th> -->
                 
                 </tr>
             </thead>
@@ -52,7 +52,7 @@
                     </td> 
                    
                     <td>{{ $listaAsignatura->asignatura }} </td>
-                    <td>{{ $listaAsignatura->logros }} </td>
+                    <!-- <td>{{ $listaAsignatura->logros }} </td> -->
                     
                     @empty
 					          <div class="alert alert-info">No se encontraron resultados en nuestros registros</div>

@@ -11,12 +11,12 @@
           <form method="GET" action="{{ route('cursos.index') }}">
           
               <div class="row mt-1">
-                  <div class="col-sm">
-                      <input type="text" class="form-control mb-2" value="{{ request('salon')}}" id="prueba" name="salon" placeholder="Filtrar por salon">
+                  <div class="col-sm-2">
+                      <input type="text" class="form-control form-control-sm mb-2" value="{{ request('salon')}}" id="prueba" name="salon" placeholder="Filtrar por salon">
                   </div>
                   <div class="col-sm">
-                      <button type="submit" class="btn btn-primary mt-0 ml-0 mr-0 " data-tippy-content="Buscar"><i class="fas fa-search"></i></button>
-                      <a href="{{ url('lista/cursos') }}"   class="btn btn-light mt-0 ml-0 "data-tippy-content="restablecer"><i class="fas fa-reply"></i></a>
+                      <button type="submit" class="btn btn-primary btn-sm mt-0 ml-0 mr-0 " data-tippy-content="Buscar"><i class="fas fa-search"></i></button>
+                      <a href="{{ url('lista/cursos') }}"   class="btn btn-light btn-sm mt-0 ml-0 "data-tippy-content="restablecer"><i class="fas fa-reply"></i></a>
                   </div>
                   <div class="col-sm">
                   <a href="{{ url('lista/cursos/create') }}" class="btn btn-primary mt-0 ml-0 mr-0 btn-sm"style="float:right;"><i class="fas fa-plus-circle"></i> Crear Curso</a>

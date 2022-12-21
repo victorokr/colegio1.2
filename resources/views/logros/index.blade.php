@@ -45,8 +45,8 @@
                   <!-- <input type="text" class="form-control mb-2" value="{{ request('grado')}}" id="prueba" name="grado" placeholder="filtrar por grado"> -->
               </div>
               <div class="col-sm">
-                  <button type="submit" class="btn btn-primary mt-3 ml-0 mr-0 " data-tippy-content="Buscar"><i class="fas fa-search"></i></button>
-                  <a href="{{ url('lista/logros') }}"   class="btn btn-light mt-3 ml-0 "data-tippy-content="restablecer"><i class="fas fa-reply"></i></a>
+                  <button type="submit" class="btn btn-primary mt-4 ml-0 mr-0 " data-tippy-content="Buscar"><i class="fas fa-search"></i></button>
+                  <a href="{{ url('lista/logros') }}"   class="btn btn-light mt-4 ml-0 "data-tippy-content="restablecer"><i class="fas fa-reply"></i></a>
               </div>
               <div class="col-sm">
               <a href="{{ url('lista/logros/create') }}" class="btn btn-primary mt-4 ml-0 mr-0 btn-sm"style="float:right;"><i class="fas fa-plus-circle"></i> Crear logro</a>

@@ -28,7 +28,7 @@ class ListacursosController extends Controller
 
         $listaCursos = Curso::orderBy('id_curso','DESC')
         ->consultaCurso($busquedaCurso)//consultaCurso es el nombre del metodo en el modelo, pero sin scope
-        ->paginate(8);
+        ->paginate(15);
         return view('listaCursos.index', compact('listaCursos'));
     }
 
@@ -89,7 +89,7 @@ class ListacursosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate(request(), ['salon' =>['required','string','max:540',Rule::unique('curso')->ignore($id,'id_curso')]]);
+        $this->validate(request(), ['salon' =>['required','max:540',Rule::unique('curso')->ignore($id,'id_curso')]]);
 
         $listaCursos = Curso::findOrFail($id);
          

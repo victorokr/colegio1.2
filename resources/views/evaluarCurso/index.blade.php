@@ -20,7 +20,7 @@
                      
                   </div>
                   <div class="col-sm">
-                 
+                  <a href="{{ url('listado') }}" class="btn btn-success mt-4 ml-0 mr-0 btn-sm" data-tippy-content="Regresar al listado de cursos" style="float:right;"><i class="fas fa-undo-alt"></i> </a>
                   </div>
               </div>
           

@@ -122,10 +122,21 @@ class ListalogrosController extends Controller
 
         $listaLogros = Logro::findOrFail($id);
         $listaLogros->id_docente= Auth::user()->id_docente;
+
+        $consultaLogrosYaCreados = Logro::where('id_periodo','=',$request->id_periodo)->where('id_asignatura','=',$request->id_asignatura)->where('id_grado','=',$request->id_grado)->count();
+        if($consultaLogrosYaCreados >= 6){
+
+            Alert::error('ups ', 'Solo puedes crear 6 logros con esta asignatura, periodo y grado')->timerProgressBar();
+            return back();
+        }else{
+
+            $listaLogros->update($request->all());
+            Alert::toast('Logro actualizado', 'success')->timerProgressBar();
+            return redirect()->route('logros.index');
+
+        }
          
-        $listaLogros->update($request->all());
-        Alert::toast('Logro actualizado', 'success')->timerProgressBar();
-        return redirect()->route('logros.index');
+        
     }
 
     /**

@@ -24,7 +24,7 @@ class CreateAsignaturaRequest extends FormRequest
     public function rules()
     {
         return [
-            'asignatura'=>'required|max:30|alpha_dash|unique:asignatura,asignatura',
+            'asignatura'=>'required|max:30|unique:asignatura,asignatura',
         ];
     }
 }

@@ -32,8 +32,8 @@
         <form method="GET" action="{{ route('alumnos.index') }}">
           
               <div class="row mt-1">
-                  <div class="col-sm-3">
-                      <input type="text" class="form-control form-control-sm mb-2" value="{{ request('nombres')}}" id="prueba" name="nombres" placeholder="busca por nombres, apellidos o documento">
+                  <div class="col-sm-2">
+                      <input type="text" class="form-control form-control-sm mb-2" value="{{ request('nombres')}}" id="prueba" name="nombres" placeholder="busca por nombres o documento">
                   </div>
                   
                   
@@ -42,7 +42,7 @@
                       <a href="{{ url('lista/alumnos') }}"   class="btn btn-light mt-0 ml-0 "title="restablecer"><i class="fas fa-reply"></i></a>
                   </div>
                   <div class="col-sm">
-                  <a href="{{ url('lista/alumnos/create') }}" class="btn btn-primary mt-0 ml-0 mr-0 btn-sm"style="float:right;"><i class="fas fa-plus-circle"></i> Ver Matriculas</a>
+                  <a href="{{ url('lista/matriculas') }}" class="btn btn-primary mt-0 ml-0 mr-0 btn-sm"style="float:right;"><i class="fas fa-plus-circle"></i> Ver Matriculas</a>
                   </div>
               </div>
           

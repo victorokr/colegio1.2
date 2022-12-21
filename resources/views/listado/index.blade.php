@@ -24,8 +24,8 @@
                 </div>
                
                 <div class="col-sm">
-                    <button type="submit" class="btn btn-primary mt-3 ml-0 mr-0 " data-tippy-content="Buscar"><i class="fas fa-search"></i></button>
-                    <a href="{{ url('listado') }}"   class="btn btn-light mt-3 ml-0 "data-tippy-content="restablecer"><i class="fas fa-reply"></i></a>
+                    <button type="submit" class="btn btn-primary mt-4 ml-0 mr-0 " data-tippy-content="Buscar"><i class="fas fa-search"></i></button>
+                    <a href="{{ url('listado') }}"   class="btn btn-light mt-4 ml-0 "data-tippy-content="restablecer"><i class="fas fa-reply"></i></a>
                 </div>
                 <div class="col-sm">
                 <a href="{{ url('listado/create') }}" class="btn btn-primary mt-4 ml-0 mr-0 btn-sm" data-tippy-content="agregue una asignatura y un salon a un docente" style="float:right;"><i class="fas fa-plus-circle"></i> Agregar</a>

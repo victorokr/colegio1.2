@@ -13,6 +13,8 @@ use App\Models\Curso;
 use App\Models\Responsable;
 use RealRashid\SweetAlert\Facades\Alert;
 
+use Illuminate\Validation\Rule;
+
 class ListaalumnosController extends Controller
 {
     public function __construct()
@@ -35,7 +37,7 @@ class ListaalumnosController extends Controller
         $listaAlumnos = Alumno::orderBy('id_alumno','DESC')
         ->alumno($nombreAlumno)//alumno es el nombre del metodo en el modelo, pero sin scope
         
-        ->paginate(8);
+        ->paginate(14);
         return view('listaAlumnos.index', compact('listaAlumnos'));
     }
 
@@ -80,15 +82,15 @@ class ListaalumnosController extends Controller
      */
     public function edit($id)
     {
-        $listaAlumnos  = Alumno::findOrFail($id);
+        $listaAlumnos        = Alumno::findOrFail($id);
 
         $factorrhh           = FactorRH::pluck('factorRH','id_factorRH');
         $epss                = Eps::pluck('EPS','id_eps');
         $lugarDeNacimientoo  = Lugardenacimiento::pluck('lugarDeNacimiento','id_lugarDeNacimiento');
         $tipoDeDocumentoo    = Tipodocumento::pluck('tipoDocumento','id_tipoDocumento');
-        $gradoo              = Grado::pluck('grado','id_grado');
+        
 
-        return view('listaAlumnos.edit', compact('listaAlumnos','factorrhh','epss','lugarDeNacimientoo','gradoo'));
+        return view('listaAlumnos.edit', compact('listaAlumnos','factorrhh','epss','lugarDeNacimientoo','tipoDeDocumentoo'));
     }
 
     /**
@@ -99,7 +101,11 @@ class ListaalumnosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    {   
+        $this->validate(request(), ['documento' =>['required','max:50',Rule::unique('alumno')->ignore($id,'id_alumno')]]);
+        $listaAlumnos = Alumno::findOrFail($id);
+        $listaAlumnos->update($request->all());
+        Alert::success('', 'la informacion del Alumno fue actualizada ')->timerProgressBar();
         return redirect()->route('alumnos.index');
     }
 
@@ -113,7 +119,7 @@ class ListaalumnosController extends Controller
     {
         $listaAlumnos = Alumno::findOrFail($id);
         $listaAlumnos->delete();
-        Alert::success('', 'El Alumno fue eliminado satisfactoriamente')->timerProgressBar();
+        Alert::success('', 'El Alumno fue eliminado ')->timerProgressBar();
         return back(); 
     }
 }
