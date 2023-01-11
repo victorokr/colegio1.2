@@ -4,7 +4,7 @@
                @if($listaMatriculas->id_estado === 1)
                 <div class="form-group ">
                     <label class="asterisko">Grado al que se pre Matriculó</label>
-                        <select id="inputGrado" class="gradoBloqueado form-control form-control-sm" name="id_grado" required data-parsley-required data-parsley-trigger="keyup" >
+                        <select id="inputGradoo" class="gradoMatriculado form-control form-control-sm" name="id_grado" required data-parsley-required data-parsley-trigger="keyup" >
                             <option value="" selected>Seleccionar...</option>
                             @foreach ($gradoo as $grado =>$Grado)
                                 <option value="{{ $grado }}" {{ old('id_grado', $listaMatriculas->id_grado)== $grado ? 'selected':'' }} > {{$Grado }} </option>
@@ -14,10 +14,10 @@
                         <script type="text/javascript" >
                                 $(document).ready(function() {
 
-                                $('.gradodoBloqueado').select2();
+                                $('.gradodoMatriculado').select2();
                                 $("#mySelect").select2();
 
-                                $(".gradoBloqueado").select2({
+                                $(".gradoMatriculado").select2({
                                  //maximumSelectionLength: 1,
                                 theme: "classic"							  
                                 });
@@ -28,7 +28,7 @@
                 </div>
                 <div class="form-group ">
                     <label class="asterisko">Año de inicio de clases</label>
-                        <select id="inputAño" class="anioInicioBloqueado form-control form-control-sm" name="id_grado" required data-parsley-required data-parsley-trigger="keyup" >
+                        <select id="inputAño" class="anioInicioBloqueado form-control form-control-sm" name="id_añoElectivo" required data-parsley-required data-parsley-trigger="keyup" >
                             <option value="" selected>Seleccionar...</option>
                             @foreach ($añoElectivoo as $añoElect =>$Año)
                                 <option value="{{ $añoElect }}" {{ old('id_añoElectivo', $listaMatriculas->id_añoElectivo)== $añoElect ? 'selected':'' }} > {{$Año }} </option>
@@ -77,7 +77,7 @@
                 </div>
                 <div class="form-group ">
                         <label class="asterisko">Renovar año de inicio de clases</label>
-                        <select id="inputAñoRenovar" class="anioRenovado form-control form-control-sm" name="id_grado" required data-parsley-required data-parsley-trigger="keyup" >
+                        <select id="inputAñoRenovar" class="anioRenovado form-control form-control-sm" name="id_añoElectivo" required data-parsley-required data-parsley-trigger="keyup" >
                             <option value="" selected>Seleccionar...</option>
                             @foreach ($añoElectivoo as $añoElect =>$Año)
                                 <option value="{{ $añoElect }}" {{ old('id_añoElectivo', $listaMatriculas->id_añoElectivo)== $añoElect ? 'selected':'' }} > {{$Año }} </option>

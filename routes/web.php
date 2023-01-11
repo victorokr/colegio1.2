@@ -22,6 +22,8 @@ use App\Http\Controllers\CalificacionesController;
 
 
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -78,5 +80,6 @@ Route::resource('evaluar', EvaluarcursoController::class);
 
 Route::resource('periodo', PeriodoController::class);
 Route::resource('calificaciones', CalificacionesController::class);
+
 
 Route::get('/downloadPDF/{id}', [CalificacionesController::class, 'downloadPDF'])->name('downloadPDF');

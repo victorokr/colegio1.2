@@ -155,7 +155,7 @@
                         
                        
                         <div class="btn-group ml-3" role="group" aria-label="Third group">
-                          <a class="editar btn btn-success btn-sm" data-tippy-content="Boletin" target="_blank" href="{{action('CalificacionesController@downloadPDF', $listaCalificacion->id_calificacion) }}"><i class="far fa-file-pdf"></i></a>
+                          <a class="editar btn btn-success btn-sm" data-tippy-content="Boletin" target="_blank" href="{{url('downloadPDF', $listaCalificacion->id_calificacion) }}"><i class="far fa-file-pdf"></i></a>
                         </div>
                         
                         

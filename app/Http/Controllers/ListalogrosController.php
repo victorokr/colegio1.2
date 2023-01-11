@@ -39,7 +39,7 @@ class ListalogrosController extends Controller
         ->consultaGrado($busquedaGrado)//consultaGrado es el nombre del metodo en el modelo, pero sin scope
         ->consultaPeriodo($busquedaPeriodo)
         ->consultaAsignatura($asignatura)
-        ->paginate(15);
+        ->paginate(9);
         return view('logros.index', compact('listaLogros','gradoo','periodoo','asignaturaa'));
     }
 
@@ -65,9 +65,9 @@ class ListalogrosController extends Controller
     public function store(CrearLogrosRequest $request)
     {
         $consultaLogrosYaCreados = Logro::where('id_periodo','=',$request->id_periodo)->where('id_asignatura','=',$request->id_asignatura)->where('id_grado','=',$request->id_grado)->count();
-        if($consultaLogrosYaCreados >= 6){
+        if($consultaLogrosYaCreados >= 1){
 
-            Alert::error('ups ', 'Solo puedes crear 6 logros con esta asignatura, periodo y grado')->timerProgressBar();
+            Alert::error('ups ', 'ya han sido creados los logros con esta asignatura, periodo y grado, intentalo de nuevo')->timerProgressBar();
             return back();
         }
 
@@ -75,7 +75,7 @@ class ListalogrosController extends Controller
             $listaLogros = Logro::create($request->all());
 
         
-            Alert::toast('Logro creado correctamente ', 'success')->timerProgressBar();
+            Alert::toast('Logros creados correctamente ', 'success')->timerProgressBar();
             return redirect()->route('logros.index', compact('listaLogros'));
         }
        
@@ -118,15 +118,22 @@ class ListalogrosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate(request(), ['logro' =>['required','string','max:540',Rule::unique('logro')->ignore($id,'id_logro')]]);
+        $this->validate(request(), ['logro1' =>['required','string','max:540',Rule::unique('logro')->ignore($id,'id_logro')]]);
+        $this->validate(request(), ['logro2' =>['required','string','max:540',Rule::unique('logro')->ignore($id,'id_logro')]]);
+        $this->validate(request(), ['logro3' =>['required','string','max:540',Rule::unique('logro')->ignore($id,'id_logro')]]);
+        $this->validate(request(), ['logro4' =>['required','string','max:540',Rule::unique('logro')->ignore($id,'id_logro')]]);
+        $this->validate(request(), ['logro5' =>['required','string','max:540',Rule::unique('logro')->ignore($id,'id_logro')]]);
+        $this->validate(request(), ['logro6' =>['required','string','max:540',Rule::unique('logro')->ignore($id,'id_logro')]]);
+
+        //_________________________________________________________________________________________________________________________________
 
         $listaLogros = Logro::findOrFail($id);
         $listaLogros->id_docente= Auth::user()->id_docente;
 
         $consultaLogrosYaCreados = Logro::where('id_periodo','=',$request->id_periodo)->where('id_asignatura','=',$request->id_asignatura)->where('id_grado','=',$request->id_grado)->count();
-        if($consultaLogrosYaCreados >= 6){
+        if($consultaLogrosYaCreados >= 1){
 
-            Alert::error('ups ', 'Solo puedes crear 6 logros con esta asignatura, periodo y grado')->timerProgressBar();
+            Alert::error('ups ', 'ya han sido creados los logros con esta asignatura, periodo y grado, intentalo de nuevo')->timerProgressBar();
             return back();
         }else{
 

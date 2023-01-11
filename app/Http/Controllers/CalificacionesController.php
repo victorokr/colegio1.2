@@ -5,15 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Calificacion;
 use App\Models\Curso;
-
+use App\Models\Logro;
 use App\Models\Periodo;
 use App\Models\Asignatura;
 use RealRashid\SweetAlert\Facades\Alert;
 
 use Illuminate\Support\Facades\Auth;
 use App\Carbon;
-use Barryvdh\DomPDF\Facade as PDF;
-use App\Models\Logro;
+use Barryvdh\DomPDF\Facade;
+use PDF;
+
 
 class CalificacionesController extends Controller
 {
@@ -94,7 +95,10 @@ class CalificacionesController extends Controller
      */
 
 
-    public function downloadPDF($id, Request $request)
+
+
+
+     public function downloadPDF($id, Request $request)
     {
         
         $calificacionIdAlumno = Calificacion::findOrFail($id);
@@ -102,7 +106,7 @@ class CalificacionesController extends Controller
         $listaLogros          = Logro::get();
         //$listaAsignatura      = Asignatura::get();
         $listaAsignatura      = Asignatura::with('logros')->get();
-        dd($listaAsignatura);
+        //dd($listaAsignatura);
         //$idAlumno = $request->get('id_alumno');
         //dd($listaLogros);
 
@@ -110,6 +114,19 @@ class CalificacionesController extends Controller
 
         return $pdf->stream('prueba.pdf');
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

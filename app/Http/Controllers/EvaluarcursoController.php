@@ -67,8 +67,11 @@ class EvaluarcursoController extends Controller
                             else{
 
                                 // dd($curso);
+                                $añoActual = date('Y');
                                 $curso        = $request->get('cursoo');
-                                $listaCursos = Matricula::orderBy('id_matricula','DESC')
+                                $listaCursos = Matricula::where('id_estado' , 2)->whereHas("añoElectivo", function ($query) use ($añoActual){
+                                    $query->where('añoElectivo','LIKE', "%$añoActual%");//filtra y muestra unicamente los alumnos que esten matriculados en el año actual
+                                })->orderBy('id_matricula','DESC')
                                 ->curso($curso) //curso es el nombre del metodo en el modelo, pero sin scope
                                 ->paginate(150);//la paginacion no se debe habilitar porque borra los parametros de la url
 

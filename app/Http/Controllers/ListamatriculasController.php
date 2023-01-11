@@ -105,6 +105,7 @@ class ListamatriculasController extends Controller
         $alumnoo             = Alumno::pluck('nombres','id_alumno');
         $estadoo             = Estado::pluck('estado','id_estado');
         $gradoo              = Grado::pluck('grado','id_grado');
+        //dd($gradoo);
         $cursoo              = Curso::pluck('salon','id_curso');
         $tipoDeAspirantee    = Tipodeaspirante::pluck('tipoDeAspirante','id_tipoDeAspirante');
         $responsablee        = Responsable::pluck('nombres','id_responsable');
@@ -179,7 +180,7 @@ class ListamatriculasController extends Controller
                         
                     }else
                     {
-                        Alert::error('UPS ', 'el curso no corresponde al grado, intentalo de nuevo')->timerProgressBar();
+                        Alert::error('UPS ', 'el curso no corresponde al grado, intentalo de nuevo ')->timerProgressBar();
                         return back();    
                     }
                     break;
@@ -199,7 +200,7 @@ class ListamatriculasController extends Controller
                         
                     }else
                     {
-                        Alert::error('UPS ', 'el curso no corresponde al grado, intentalo de nuevo')->timerProgressBar();
+                        Alert::error('UPS ', 'el curso no corresponde al grado, intentalo de nuevo ')->timerProgressBar();
                         return back();                
                     }
                     break;
@@ -219,11 +220,12 @@ class ListamatriculasController extends Controller
                         
                     }else
                     {
-                        Alert::error('UPS ', 'el curso no corresponde al grado, intentalo de nuevo')->timerProgressBar();
+                        Alert::error('UPS ', 'el curso no corresponde al grado, intentalo de nuevo ')->timerProgressBar();
                         return back();   
                     }
-                    break;
+                    
                 }
+                break;
 
             case "4":
                 $arrayCursos = ['401', '402', '403', '404', '405', '406', '407', '408', '409'];
@@ -239,7 +241,7 @@ class ListamatriculasController extends Controller
                         
                     }else
                     {
-                        Alert::error('UPS ', 'el curso no corresponde al grado, intentalo de nuevo')->timerProgressBar();
+                        Alert::error('UPS ', 'el curso no corresponde al grado, intentalo de nuevo ')->timerProgressBar();
                         return back();   
                     }
                     break;
@@ -259,7 +261,7 @@ class ListamatriculasController extends Controller
                         
                     }else
                     {
-                        Alert::error('UPS ', 'el curso no corresponde al grado, intentalo de nuevo')->timerProgressBar();
+                        Alert::error('UPS ', 'el curso no corresponde al grado, intentalo de nuevo ')->timerProgressBar();
                         return back();   
                     }
                     break;
@@ -279,7 +281,7 @@ class ListamatriculasController extends Controller
                         
                     }else
                     {
-                        Alert::error('UPS ', 'el curso no corresponde al grado, intentalo de nuevo')->timerProgressBar();
+                        Alert::error('UPS ', 'el curso no corresponde al grado, intentalo de nuevo ')->timerProgressBar();
                         return back();   
                     }
                     break;
@@ -299,7 +301,7 @@ class ListamatriculasController extends Controller
                         
                     }else
                     {
-                        Alert::error('UPS ', 'el curso no corresponde al grado, intentalo de nuevo')->timerProgressBar();
+                        Alert::error('UPS ', 'el curso no corresponde al grado, intentalo de nuevo ')->timerProgressBar();
                         return back();   
                     }
                     break;
@@ -319,7 +321,7 @@ class ListamatriculasController extends Controller
                         
                     }else
                     {
-                        Alert::error('UPS ', 'el curso no corresponde al grado, intentalo de nuevo')->timerProgressBar();
+                        Alert::error('UPS ', 'el curso no corresponde al grado, intentalo de nuevo ')->timerProgressBar();
                         return back();   
                     }
                     break;
@@ -339,7 +341,7 @@ class ListamatriculasController extends Controller
                         
                     }else
                     {
-                        Alert::error('UPS ', 'el curso no corresponde al grado, intentalo de nuevo')->timerProgressBar();
+                        Alert::error('UPS ', 'el curso no corresponde al grado, intentalo de nuevo ')->timerProgressBar();
                         return back();   
                     }
                     break;
@@ -359,7 +361,7 @@ class ListamatriculasController extends Controller
                         
                     }else
                     {
-                        Alert::error('UPS ', 'el curso no corresponde al grado, intentalo de nuevo')->timerProgressBar();
+                        Alert::error('UPS ', 'el curso no corresponde al grado, intentalo de nuevo ')->timerProgressBar();
                         return back();   
                     }
                     break;
@@ -379,7 +381,7 @@ class ListamatriculasController extends Controller
                         
                     }else
                     {
-                        Alert::error('UPS ', 'el curso no corresponde al grado, intentalo de nuevo')->timerProgressBar();
+                        Alert::error('UPS ', 'el curso no corresponde al grado, intentalo de nuevo ')->timerProgressBar();
                         return back();   
                     }
                     break;

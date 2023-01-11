@@ -3,7 +3,7 @@
 
 <div class="container-angosto">
   <div class="card  mr-3 ml-0 mt-3">
-    <div class="card-header text-center"><a><i class="icono fas fa-user-cog"></i> Editar Logro</a>
+    <div class="card-header text-center"><a><i class="icono fas fa-user-cog"></i> Editar Logros:  {{ ($listaLogros->asignatura)->asignatura }}</a>
     </div>
       <div class="card-body">
         <div class="container-cssform">
