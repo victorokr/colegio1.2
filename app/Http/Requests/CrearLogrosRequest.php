@@ -29,8 +29,8 @@ class CrearLogrosRequest extends FormRequest
             'logro2'       =>'required|unique:logro,logro2',
             'logro3'       =>'required|unique:logro,logro3',
             'logro4'       =>'required|unique:logro,logro4',
-            'logro5'       =>'required|unique:logro,logro5',
-            'logro6'       =>'required|unique:logro,logro6',
+            // 'logro5'       =>'required|unique:logro,logro5',
+            // 'logro6'       =>'required|unique:logro,logro6',
         ];
     }
 }

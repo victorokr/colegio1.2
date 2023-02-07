@@ -8,7 +8,7 @@ class Calificacion extends Model
 {
     protected $table = 'calificacion';
     protected $primaryKey = 'id_calificacion';
-    protected $fillable = ['nota1','nota2','nota3','nota4','nota5','nota6','promedio','id_asignatura','id_alumno','id_curso','id_periodo','id_docente','id_grado'];
+    protected $fillable = ['nota1','nota2','nota3','nota4','promedio','id_asignatura','id_alumno','id_curso','id_periodo','id_docente','id_grado','id_logro'];
 
 
     public function asignatura()
@@ -34,6 +34,11 @@ class Calificacion extends Model
     public function docente()
     {
         return $this->belongsTo('App\Models\Docente','id_docente');
+    }
+
+    public function logro()
+    {
+        return $this->belongsTo('App\Models\Logro','id_logro');
     }
 
 
@@ -80,6 +85,11 @@ class Calificacion extends Model
     return $query->where('id_periodo','LIKE',"%$periodo%");
     }
 
+    public function scopeConsulta_año($query, $año)
+    {
+    if($año)
+    return $query->where('created_at','LIKE',"%$año%");
+    }
     
 
 

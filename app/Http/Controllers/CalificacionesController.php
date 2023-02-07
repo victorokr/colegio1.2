@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Carbon;
 use Barryvdh\DomPDF\Facade;
 use PDF;
+use DB;
 
 
 class CalificacionesController extends Controller
@@ -40,7 +41,7 @@ class CalificacionesController extends Controller
         $periodo      = $request->get('periodo');
         $asignatura   = $request->get('asignatura');
         $nombreAlumno = $request->get('nombre');
-       
+        $año          = $request->get('año');
         
        // $listacursos  = new Calificacion();
        
@@ -50,7 +51,8 @@ class CalificacionesController extends Controller
         ->consultaPeriodo($periodo)
         ->consultaAsignatura($asignatura)
         ->consultaNombre($nombreAlumno)
-        ->paginate(8);
+        ->consulta_año($año)
+        ->paginate(15);
        
     
         return view('calificaciones.index', compact('listaCalificaciones','cursoo','periodoo','asignaturaa'));
@@ -102,15 +104,37 @@ class CalificacionesController extends Controller
     {
         
         $calificacionIdAlumno = Calificacion::findOrFail($id);
-        $listaCalificacioPdf  = Calificacion::get();
-        $listaLogros          = Logro::get();
-        //$listaAsignatura      = Asignatura::get();
-        $listaAsignatura      = Asignatura::with('logros')->get();
-        //dd($listaAsignatura);
-        //$idAlumno = $request->get('id_alumno');
-        //dd($listaLogros);
+        $created_at = $calificacionIdAlumno->created_at->year;
+        
+        //$añoActual = date('Y');
+        //$listaCalificacioPdf  = Calificacion::whereYear('created_at', $created_at)->get();
+        
+        //filtra por año todas las calificaciones del boletin
+        $listaCalificacioPdf  = Calificacion::where('id_alumno','=',$calificacionIdAlumno->id_alumno )
+        ->where('id_periodo','=',$calificacionIdAlumno->id_periodo)
+        ->whereYear('created_at', $created_at)->get();
+        //dd($listaCalificacioPdf);
 
-        $pdf = PDF::loadView('calificaciones.show', compact('calificacionIdAlumno','listaCalificacioPdf','listaLogros','listaAsignatura'));
+        //makeHidden() oculta las columnas dadas
+        //$filterOnlyNotes = $listaCalificacioPdf->makeHidden(['id_calificacion','promedio','id_asignatura','id_alumno','id_curso','id_periodo','id_docente','id_grado','created_at','updated_at'])->toArray();
+        //$collectionNotes = collect($filterOnlyNotes);
+      
+
+        // $filterOnlyNotes = $listaCalificacioPdf->pluck('nota6');
+    
+        
+        // $listaLogrosPDF = Logro::where('id_periodo' , $calificacionIdAlumno->id_periodo)
+        // ->where('id_grado', $calificacionIdAlumno->id_grado)->get();
+
+
+        //dd($listaLogrosPDF);
+        //$filterOnlyLogros = $listaLogrosPDF->makeHidden(['id_logro','id_docente','id_periodo','id_asignatura','id_grado','created_at','updated_at'])->toArray();
+        //$collectionLogros = collect($filterOnlyLogros);
+       
+
+        //$combined =  $collectionNotes->combine($collectionLogros);
+     
+        $pdf = PDF::loadView('calificaciones.show', compact('calificacionIdAlumno','listaCalificacioPdf'))->setPaper('A4','landscape');
 
         return $pdf->stream('prueba.pdf');
     }

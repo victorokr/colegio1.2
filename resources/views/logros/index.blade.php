@@ -64,8 +64,8 @@
                   <th scope="col">Logro2</th>
                   <th scope="col">Logro3</th>
                   <th scope="col">Logro4</th>
-                  <th scope="col">Logro5</th>
-                  <th scope="col">Logro6</th>
+                  <!-- <th scope="col">Logro5</th>
+                  <th scope="col">Logro6</th> -->
                   <th scope="col">Asignatura</th>
                   <th scope="col">Periodo</th>
                   <th scope="col">Grado</th>
@@ -91,8 +91,8 @@
                   <td>{{ $listaLogro->logro2 }}</td>
                   <td>{{ $listaLogro->logro3 }}</td>
                   <td>{{ $listaLogro->logro4 }}</td>
-                  <td>{{ $listaLogro->logro5 }}</td>
-                  <td>{{ $listaLogro->logro6 }}</td>
+                  <!-- <td>{{ $listaLogro->logro5 }}</td>
+                  <td>{{ $listaLogro->logro6 }}</td> -->
                   <td>{{optional($listaLogro->asignatura)->asignatura}}</td>
                   <td>{{optional($listaLogro->periodo)   ->periodo}}</td>
                   <td>{{optional($listaLogro->grado)     ->grado}}</td>

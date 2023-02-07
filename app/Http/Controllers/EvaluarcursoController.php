@@ -19,6 +19,7 @@ use Illuminate\Contracts\Encryption\DecryptException;
 
 use Illuminate\Validation\Rule;
 use Validator;
+use App\Models\Logro;
 
 
 class EvaluarcursoController extends Controller
@@ -187,12 +188,27 @@ class EvaluarcursoController extends Controller
         }
 
 
+        //---------------------------------------------------------------------------------------
+            //trae solo el id del logro
+            $listaLogros = Logro::where('id_periodo' , $this->calcularPeriodo()) 
+            ->where('id_grado', $request->id_grado)
+            ->where('id_asignatura', $idAsignatura)->pluck('id_logro')->first();
+            
+                
+            
+            
+            //dd($listaLogros);
+              
+            
 
+        
+        
         
         //dd($idGrado);
 
-        $notas =  $request->all( 'nota1','nota2','nota3','nota4','nota5','nota6');
-        $calcularPromedio = array_sum($notas)/6;
+        $notas =  $request->all( 'nota1','nota2','nota3','nota4');
+        $countColum = count($notas);
+        $calcularPromedio = array_sum($notas)/$countColum;
         $numeroFormateado = bcdiv($calcularPromedio, '1','1'); //bcdiv no redondea el resultado
         //dd($numeroFormateado);
         
@@ -204,11 +220,11 @@ class EvaluarcursoController extends Controller
             "nota2" => $request->input('nota2'),
             "nota3" => $request->input('nota3'),
             "nota4" => $request->input('nota4'),
-            "nota5" => $request->input('nota5'),
-            "nota6" => $request->input('nota6'),
+            // "nota5" => $request->input('nota5'),
+            // "nota6" => $request->input('nota6'),
             "promedio"      => ($numeroFormateado),
             "id_asignatura" =>  ($idAsignatura),
-            
+            "id_logro"      =>  ($listaLogros),
             "id_alumno"     => $request->input('id_alumno'),
             "id_curso"      => ($idCurso),
             "id_periodo"    => $this->calcularPeriodo(),

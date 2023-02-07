@@ -36,7 +36,7 @@
                     <textarea class="form-control form-control-sm " id="inputLogro4" name="logro4"  value="{{ old('logro4') }}"  placeholder="escribe el logro 4" required  data-parsley-length="[3, 200]" data-parsley-trigger="keyup"></textarea>
                     {!!$errors->first('logro4','<span class=error>:message</span>')!!}
                 </div>
-                <div class="form-group ">
+                <!-- <div class="form-group ">
                     <label class="asterisko"> logro cinco</label>
                     <textarea class="form-control form-control-sm " id="inputLogro5" name="logro5"  value="{{ old('logro5') }}"  placeholder="escribe el logro 5" required  data-parsley-length="[3, 200]" data-parsley-trigger="keyup"></textarea>
                     {!!$errors->first('logro5','<span class=error>:message</span>')!!}
@@ -45,7 +45,7 @@
                     <label class="asterisko"> logro seis</label>
                     <textarea class="form-control form-control-sm " id="inputLogro6" name="logro6"  value="{{ old('logro6') }}"  placeholder="escribe el logro 6" required  data-parsley-length="[3, 200]" data-parsley-trigger="keyup"></textarea>
                     {!!$errors->first('logro6','<span class=error>:message</span>')!!}
-                </div>
+                </div> -->
                 <div class="form-group ">
                     <label class="asterisko">para que periodo?</label>
                         <select id="inputPeriodo" class="form-control form-control-sm" name="id_periodo" required data-parsley-required data-parsley-trigger="keyup" >

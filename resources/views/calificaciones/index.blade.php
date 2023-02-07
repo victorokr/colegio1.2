@@ -99,6 +99,10 @@
 			              <label for="inlineFormInput">filtrar por alumno</label>
 			              <input type="text" class="form-control form-control-sm " value="{{ request('nombre')}}"  name="nombre" placeholder="nombre completo"  >
 			          </div>
+                <div class=" col-sm-1">
+			              <label for="inputfecha">filtrar por año</label>
+			              <input type="text" class="form-control form-control-sm mr-0 " value="{{ request('año')}}"  name="año" placeholder="año"  >
+			          </div>
                
                 <div class="col-sm">
                     <button type="submit" class="btn btn-primary mt-3 ml-0 mr-0 " data-tippy-content="Buscar"><i class="fas fa-search"></i></button>
@@ -124,13 +128,14 @@
                   <th scope="col">logro2</th>
                   <th scope="col">logro3</th>
                   <th scope="col">logro4</th>
-                  <th scope="col">logro5</th>
-                  <th scope="col">logro6</th>
+                  <!-- <th scope="col">logro5</th>
+                  <th scope="col">logro6</th> -->
                   <th scope="col">promedio</th>
                   <th scope="col">asignatura</th>
                   <th scope="col">alumno</th>
                   <th scope="col">curso</th>
                   <th scope="col">periodo</th>
+                  <th scope="col">año</th>
                   
                   <th scope="col"><input type="checkbox" class=" ml-1"  data-tippy-content="Seleccionar todo" id="checkAll" ></th>
                   
@@ -146,9 +151,9 @@
                             
                         </div>
 
-                        
+                        <!-- se quitaron data-minota5 y 6 -->
                         <div class="btn-group " role="group" aria-label="Second group">
-                            <button class="editar btn btn-info btn-sm" data-tippy-content="editar"  data-toggle="modal" data-target="#modalEdit" data-minota1="{{ $listaCalificacion->nota1 }}" data-minota2="{{ $listaCalificacion->nota2 }}" data-minota3="{{ $listaCalificacion->nota3 }}" data-minota4="{{ $listaCalificacion->nota4 }}" data-minota5="{{ $listaCalificacion->nota5 }}" data-minota6="{{ $listaCalificacion->nota6 }}" data-idcalificacion="{{ $listaCalificacion->id_calificacion }}" ><i class="fas fa-edit"></i></button>
+                            <button class="editar btn btn-info btn-sm" data-tippy-content="editar"  data-toggle="modal" data-target="#modalEdit" data-minota1="{{ $listaCalificacion->nota1 }}" data-minota2="{{ $listaCalificacion->nota2 }}" data-minota3="{{ $listaCalificacion->nota3 }}" data-minota4="{{ $listaCalificacion->nota4 }}"  data-idcalificacion="{{ $listaCalificacion->id_calificacion }}" ><i class="fas fa-edit"></i></button>
                         </div>
                         
 
@@ -166,13 +171,14 @@
                     <td>{{ $listaCalificacion->nota2 }} </td>
                     <td>{{ $listaCalificacion->nota3 }} </td>
                     <td>{{ $listaCalificacion->nota4 }} </td>
-                    <td>{{ $listaCalificacion->nota5 }} </td>
-                    <td>{{ $listaCalificacion->nota6 }} </td>
+                    <!-- <td>{{ $listaCalificacion->nota5 }} </td>
+                    <td>{{ $listaCalificacion->nota6 }} </td> -->
                     <td>{{ $listaCalificacion->promedio }} </td>
                     <td>{{ optional($listaCalificacion->asignatura)->asignatura }} </td>
                     <td>{{ optional($listaCalificacion->alumno)    ->nombres }} </td>
                     <td>{{ optional($listaCalificacion->curso)     ->salon }} </td>
                     <td>{{ optional($listaCalificacion->periodo)   ->id_periodo }} </td>
+                    <td>{{ $listaCalificacion->created_at->year }} </td>
                     <!-- <td>{{ optional($listaCalificacion->docente)   ->nombres }} </td> -->
                     <div class="btn-group ml-1" role="group" aria-label="Third group">
                      <td> <input type="checkbox" class="checkBoxClass  ml-1" data-tippy-content="Seleccionar" value="{{ $listaCalificacion->id_calificacion}}"  name="ids"  ></td>
@@ -216,8 +222,8 @@
                     var nota2 = button.data('minota2')
                     var nota3 = button.data('minota3')
                     var nota4 = button.data('minota4')
-                    var nota5 = button.data('minota5')
-                    var nota6 = button.data('minota6')
+                    // var nota5 = button.data('minota5')
+                    // var nota6 = button.data('minota6')
                     var idcal = button.data('idcalificacion')
                     
                     var modal = $(this)
@@ -226,8 +232,8 @@
                     modal.find('.modal-body #nota2').val(nota2);
                     modal.find('.modal-body #nota3').val(nota3);
                     modal.find('.modal-body #nota4').val(nota4);
-                    modal.find('.modal-body #nota5').val(nota5);
-                    modal.find('.modal-body #nota6').val(nota6);
+                    // modal.find('.modal-body #nota5').val(nota5);
+                    // modal.find('.modal-body #nota6').val(nota6);
                     modal.find('.modal-body #idcalificacion').val(idcal);
                     })
                   </script>

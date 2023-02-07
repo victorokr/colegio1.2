@@ -11,6 +11,7 @@ use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\CrearLogrosRequest;
 use RealRashid\SweetAlert\Facades\Alert;
+use Validator;
 
 class ListalogrosController extends Controller
 {
@@ -64,20 +65,38 @@ class ListalogrosController extends Controller
      */
     public function store(CrearLogrosRequest $request)
     {
-        $consultaLogrosYaCreados = Logro::where('id_periodo','=',$request->id_periodo)->where('id_asignatura','=',$request->id_asignatura)->where('id_grado','=',$request->id_grado)->count();
-        if($consultaLogrosYaCreados >= 1){
+        
+        //$consultaLogrosYaCreados = Logro::where('id_periodo','=',$request->id_periodo)->where('id_asignatura','=',$request->id_asignatura)->where('id_grado','=',$request->id_grado)->count();
 
-            Alert::error('ups ', 'ya han sido creados los logros con esta asignatura, periodo y grado, intentalo de nuevo')->timerProgressBar();
+        //validacion doble
+        $validator = Validator::make($request->all(), [
+            'id_periodo' =>['required',Rule::unique('logro')->where(function ($query) use ($request){
+                return $query->where('id_asignatura', $request->id_asignatura)
+                ->where('id_grado', $request->id_grado);
+                
+            })],
+
+            'id_asignatura' =>['required',Rule::unique('logro')->where(function ($query) use ($request){
+                return $query->where('id_periodo', $request->id_periodo);
+                
+            })],
+
+        ]);
+
+
+        if($validator->fails()){
+
+            Alert::error('ups ', 'los logros ya existen con esta asignatura, grado y periodo, intentalo de nuevo')->timerProgressBar();
             return back();
         }
 
-        else{
+        
             $listaLogros = Logro::create($request->all());
 
         
             Alert::toast('Logros creados correctamente ', 'success')->timerProgressBar();
             return redirect()->route('logros.index', compact('listaLogros'));
-        }
+        
        
     }
 
@@ -122,26 +141,45 @@ class ListalogrosController extends Controller
         $this->validate(request(), ['logro2' =>['required','string','max:540',Rule::unique('logro')->ignore($id,'id_logro')]]);
         $this->validate(request(), ['logro3' =>['required','string','max:540',Rule::unique('logro')->ignore($id,'id_logro')]]);
         $this->validate(request(), ['logro4' =>['required','string','max:540',Rule::unique('logro')->ignore($id,'id_logro')]]);
-        $this->validate(request(), ['logro5' =>['required','string','max:540',Rule::unique('logro')->ignore($id,'id_logro')]]);
-        $this->validate(request(), ['logro6' =>['required','string','max:540',Rule::unique('logro')->ignore($id,'id_logro')]]);
+        
+        // $this->validate(request(), ['logro5' =>['required','string','max:540',Rule::unique('logro')->ignore($id,'id_logro')]]);
+        // $this->validate(request(), ['logro6' =>['required','string','max:540',Rule::unique('logro')->ignore($id,'id_logro')]]);
+
+
+        $validator = Validator::make($request->all(), [
+            'id_periodo' =>['required',Rule::unique('logro')->ignore($id,'id_logro')->where(function ($query) use ($request){
+                return $query->where('id_asignatura', $request->id_asignatura)
+                ->where('id_grado', $request->id_grado);
+                
+            })],
+
+            'id_asignatura' =>['required',Rule::unique('logro')->ignore($id,'id_logro')->where(function ($query) use ($request){
+                return $query->where('id_periodo', $request->id_periodo);
+                
+            })],
+
+        ]);
 
         //_________________________________________________________________________________________________________________________________
 
-        $listaLogros = Logro::findOrFail($id);
-        $listaLogros->id_docente= Auth::user()->id_docente;
+        
 
-        $consultaLogrosYaCreados = Logro::where('id_periodo','=',$request->id_periodo)->where('id_asignatura','=',$request->id_asignatura)->where('id_grado','=',$request->id_grado)->count();
-        if($consultaLogrosYaCreados >= 1){
+        //$consultaLogrosYaCreados = Logro::where('id_periodo','=',$request->id_periodo)->where('id_asignatura','=',$request->id_asignatura)->where('id_grado','=',$request->id_grado)->count();
+        
+        if($validator->fails()){
 
-            Alert::error('ups ', 'ya han sido creados los logros con esta asignatura, periodo y grado, intentalo de nuevo')->timerProgressBar();
+            Alert::error('ups ', 'los logros ya existen con esta asignatura, grado y periodo, intentalo de nuevo')->timerProgressBar();
             return back();
-        }else{
+        }
+
+            $listaLogros = Logro::findOrFail($id);
+            $listaLogros->id_docente= Auth::user()->id_docente;
 
             $listaLogros->update($request->all());
             Alert::toast('Logro actualizado', 'success')->timerProgressBar();
             return redirect()->route('logros.index');
 
-        }
+        
          
         
     }
