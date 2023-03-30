@@ -8,7 +8,7 @@ class Calificacion extends Model
 {
     protected $table = 'calificacion';
     protected $primaryKey = 'id_calificacion';
-    protected $fillable = ['nota1','nota2','nota3','nota4','promedio','id_asignatura','id_alumno','id_curso','id_periodo','id_docente','id_grado','id_logro'];
+    protected $fillable = ['nota1','nota2','nota3','nota4','id_asignatura','id_alumno','id_curso','id_periodo','id_docente','id_grado','id_logro','id_promedio'];
 
 
     public function asignatura()
@@ -39,6 +39,11 @@ class Calificacion extends Model
     public function logro()
     {
         return $this->belongsTo('App\Models\Logro','id_logro');
+    }
+
+    public function promedio()
+    {
+        return $this->belongsTo('App\Models\Promedio','id_promedio');
     }
 
 

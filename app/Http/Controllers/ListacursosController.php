@@ -8,6 +8,9 @@ use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Requests\CreateCursoRequest;
 use Illuminate\Validation\Rule;
 
+use App\Models\Sede;
+use App\Models\Jornada;
+
 class ListacursosController extends Controller
 {
 
@@ -39,7 +42,9 @@ class ListacursosController extends Controller
      */
     public function create()
     {
-        return view('listaCursos.create');
+        $sedee   = Sede::pluck('sede','id_sede');
+        $jornadaa = Jornada::pluck('jornada','id_jornada');
+        return view('listaCursos.create', compact('sedee','jornadaa'));
     }
 
     /**
@@ -76,8 +81,11 @@ class ListacursosController extends Controller
      */
     public function edit($id)
     { 
+        $sedee    = Sede::pluck('sede','id_sede');
+        $jornadaa = Jornada::pluck('jornada','id_jornada');
+
         $listaCursos    = Curso::findOrFail($id);
-        return view('listaCursos.edit', compact('listaCursos'));
+        return view('listaCursos.edit', compact('listaCursos','sedee','jornadaa'));
     }
 
     /**

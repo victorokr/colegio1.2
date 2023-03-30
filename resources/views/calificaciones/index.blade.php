@@ -124,13 +124,13 @@
                 <tr>
                   <th scope="col">Acciones</th>
                   
-                  <th scope="col">logro1</th>
-                  <th scope="col">logro2</th>
-                  <th scope="col">logro3</th>
-                  <th scope="col">logro4</th>
+                  <th scope="col">l1</th>
+                  <th scope="col">l2</th>
+                  <th scope="col">l3</th>
+                  <th scope="col">l4</th>
                   <!-- <th scope="col">logro5</th>
                   <th scope="col">logro6</th> -->
-                  <th scope="col">promedio</th>
+                  <th scope="col">prom</th>
                   <th scope="col">asignatura</th>
                   <th scope="col">alumno</th>
                   <th scope="col">curso</th>

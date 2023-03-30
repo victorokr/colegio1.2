@@ -20,6 +20,7 @@ use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Validation\Rule;
 use Validator;
 use App\Models\Logro;
+use App\Models\Promedio;
 
 
 class EvaluarcursoController extends Controller
@@ -211,7 +212,61 @@ class EvaluarcursoController extends Controller
         $calcularPromedio = array_sum($notas)/$countColum;
         $numeroFormateado = bcdiv($calcularPromedio, '1','1'); //bcdiv no redondea el resultado
         //dd($numeroFormateado);
+
+        $añoActual = date('Y');
+
+        $consultaIdPromedio = Promedio::where('id_asignatura','=', $idAsignatura)
+                                        ->where('id_alumno','=', $request->input('id_alumno'))
+                                        ->whereYear('created_at', $añoActual)
+                                        ->pluck('id_promedio')->first();
+        //dd($consultaIdPromedio);
+
+
+        //tabla promedio insert or update
+        if (is_null($consultaIdPromedio)){
+            //create promedio
+            //------------------------------------------------------------
+            $crearPromedio = new Promedio;
+            $crearPromedio->promediop1    = $numeroFormateado;
+            $crearPromedio->id_asignatura = $idAsignatura;
+            $crearPromedio->id_alumno     = $request->input('id_alumno');  
+            $crearPromedio->save();
+            //------------------------------------------------------------
+
+        }
+        else
+        {
+            //update promedio
+            switch ($this->calcularPeriodo()) {
+                case "2":
+                      $promediop2 = Promedio::where('id_promedio','=', $consultaIdPromedio)->first();
+                      $promediop2->promediop2 = $numeroFormateado;
+                      $promediop2->save();  
+                    break;
+                      
+                case "3":
+                      $promediop3 = Promedio::where('id_promedio','=', $consultaIdPromedio)>first();
+                      $promediop3->promediop3 = $numeroFormateado;
+                      $promediop3->save(); 
+                    break;
+
+                case "4":
+                      $promediop4 = Promedio::where('id_promedio','=', $consultaIdPromedio)>first();
+                      $promediop4->promediop4 = $numeroFormateado;
+                      $promediop4->save(); 
+                    break;
+                }
+
+        }
+
+        //-----------------------------------------------------------------------------
+      
         
+        $idPromedio = Promedio::where('id_asignatura','=', $idAsignatura)
+                                        ->where('id_alumno','=', $request->input('id_alumno'))
+                                        ->whereYear('created_at', $añoActual)
+                                        ->pluck('id_promedio')->first();
+           
 
         $crearCalificacion = Calificacion::create([
             
@@ -228,7 +283,7 @@ class EvaluarcursoController extends Controller
             "id_alumno"     => $request->input('id_alumno'),
             "id_curso"      => ($idCurso),
             "id_periodo"    => $this->calcularPeriodo(),
-           // "id_periodo"    => '4',
+            "id_promedio"   => ($idPromedio),
             "id_docente"    =>  Auth::user()->id_docente,
             "id_grado"      => $request->input('id_grado'),
 

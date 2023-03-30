@@ -33,6 +33,8 @@
                 <tr>
                 <th scope="col">Acciones</th>
                 <th scope="col">Cursos</th>
+                <th scope="col">Sede</th>
+                <th scope="col">Jornada</th>
                 
                 
                 </tr>
@@ -52,7 +54,8 @@
                     </td> 
                    
                     <td>{{ $listaCurso->salon }} </td>
-                   
+                    <td>{{ optional($listaCurso->sede)->sede }} </td>
+                    <td>{{ optional($listaCurso->jornada)->jornada }} </td>
                     
                     @empty
 					          <div class="alert alert-info">No se encontraron resultados en nuestros registros</div>

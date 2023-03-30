@@ -38,7 +38,7 @@ class ListadoController extends Controller
 
         $listado = Listado::orderBy('id_listado','DESC')
         ->consultaCurso($busquedaCurso)//consultaCurso es el nombre del metodo en el modelo, pero sin scope
-        ->paginate(8);
+        ->paginate(15);
         return view('listado.index', compact('listado','cursoo'));
     }
 

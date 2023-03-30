@@ -5,7 +5,7 @@
 <div class="container-angosto">
   <div class="card  mr-3 ml-0 mt-3">
     <div class="card-header ">
-    <a><i class="icono fas fa-bookmark"></i>  Logros</a>
+    <a><i class="icono fas fa-bookmark"></i>  Banco de Logros</a>
     </div>
     <div class="card-body">
       <form method="GET" action="{{ route('logros.index') }}">

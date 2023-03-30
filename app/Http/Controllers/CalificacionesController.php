@@ -52,7 +52,7 @@ class CalificacionesController extends Controller
         ->consultaAsignatura($asignatura)
         ->consultaNombre($nombreAlumno)
         ->consulta_año($año)
-        ->paginate(15);
+        ->paginate(100);
        
     
         return view('calificaciones.index', compact('listaCalificaciones','cursoo','periodoo','asignaturaa'));
@@ -110,10 +110,28 @@ class CalificacionesController extends Controller
         //$listaCalificacioPdf  = Calificacion::whereYear('created_at', $created_at)->get();
         
         //filtra por año todas las calificaciones del boletin
-        $listaCalificacioPdf  = Calificacion::where('id_alumno','=',$calificacionIdAlumno->id_alumno )
-        ->where('id_periodo','=',$calificacionIdAlumno->id_periodo)
-        ->whereYear('created_at', $created_at)->get();
+         $listaCalificacioPdf  = Calificacion::where('id_alumno','=',$calificacionIdAlumno->id_alumno )
+         ->where('id_periodo','=',1)
+         ->whereYear('created_at', $created_at)->get();
         //dd($listaCalificacioPdf);
+
+        $listaCalificacioPdf2  = Calificacion::where('id_alumno','=',$calificacionIdAlumno->id_alumno )
+         ->where('id_periodo','=',2)
+         ->whereYear('created_at', $created_at)->get();
+
+         $listaCalificacioPdf3  = Calificacion::where('id_alumno','=',$calificacionIdAlumno->id_alumno )
+         ->where('id_periodo','=',3)
+         ->whereYear('created_at', $created_at)->get();
+
+         $listaCalificacioPdf4  = Calificacion::where('id_alumno','=',$calificacionIdAlumno->id_alumno )
+         ->where('id_periodo','=',4)
+         ->whereYear('created_at', $created_at)->get();
+
+
+        // $todosLosPromedios = Calificacion::where('id_alumno','=',$calificacionIdAlumno->id_alumno )
+        
+        // ->whereYear('created_at', $created_at)->get();
+        //dd($todosLosPromedios);
 
         //makeHidden() oculta las columnas dadas
         //$filterOnlyNotes = $listaCalificacioPdf->makeHidden(['id_calificacion','promedio','id_asignatura','id_alumno','id_curso','id_periodo','id_docente','id_grado','created_at','updated_at'])->toArray();
@@ -134,7 +152,7 @@ class CalificacionesController extends Controller
 
         //$combined =  $collectionNotes->combine($collectionLogros);
      
-        $pdf = PDF::loadView('calificaciones.show', compact('calificacionIdAlumno','listaCalificacioPdf'))->setPaper('A4','landscape');
+        $pdf = PDF::loadView('calificaciones.show', compact('calificacionIdAlumno','listaCalificacioPdf','listaCalificacioPdf2','listaCalificacioPdf3','listaCalificacioPdf4'))->setPaper('A4','landscape');
 
         return $pdf->stream('prueba.pdf');
     }
@@ -171,8 +189,9 @@ class CalificacionesController extends Controller
         //return $request->all();
         $calificacion = Calificacion::findOrFail($request->id_calificacion);
 
-        $notas =  $request->all( 'nota1','nota2','nota3','nota4','nota5','nota6');
-        $calcularPromedio = array_sum($notas)/6;
+        $notas =  $request->all( 'nota1','nota2','nota3','nota4');
+        $countColum = count($notas);
+        $calcularPromedio = array_sum($notas)/$countColum;
         $numeroFormateado = bcdiv($calcularPromedio, '1','1'); //bcdiv no redondea el resultado
         //"promedio"      => ($numeroFormateado),
         
@@ -182,8 +201,8 @@ class CalificacionesController extends Controller
             "nota2" => $request->input('nota2'),
             "nota3" => $request->input('nota3'),
             "nota4" => $request->input('nota4'),
-            "nota5" => $request->input('nota5'),
-            "nota6" => $request->input('nota6'),
+            // "nota5" => $request->input('nota5'),
+            // "nota6" => $request->input('nota6'),
             "promedio"      => ($numeroFormateado),
         ]);
         Alert::toast('nota actualizada correctamente', 'success')->timerProgressBar();

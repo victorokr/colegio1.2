@@ -11,22 +11,22 @@
 
                 <div class="form-group ">
                     <label class="asterisko"> logro1</label>
-                    <textarea class="form-control form-control-sm " id="inputLogro1" name="logro1"    placeholder="escribe el logro" required  data-parsley-length="[3, 200]" data-parsley-trigger="keyup">{{ $listaLogros->logro1 }}</textarea>
+                    <textarea class="form-control form-control-sm " id="inputLogro1" name="logro1"    placeholder="escribe el logro" required  data-parsley-length="[3, 135]" data-parsley-trigger="keyup">{{ $listaLogros->logro1 }}</textarea>
                     {!!$errors->first('logro1','<span class=error>:message</span>')!!}
                 </div>
                 <div class="form-group ">
                     <label class="asterisko"> logro2</label>
-                    <textarea class="form-control form-control-sm " id="inputLogro2" name="logro2"    placeholder="escribe el logro" required  data-parsley-length="[3, 200]" data-parsley-trigger="keyup">{{ $listaLogros->logro2 }}</textarea>
+                    <textarea class="form-control form-control-sm " id="inputLogro2" name="logro2"    placeholder="escribe el logro" required  data-parsley-length="[3, 135]" data-parsley-trigger="keyup">{{ $listaLogros->logro2 }}</textarea>
                     {!!$errors->first('logro2','<span class=error>:message</span>')!!}
                 </div>
                 <div class="form-group ">
                     <label class="asterisko"> logro3</label>
-                    <textarea class="form-control form-control-sm " id="inputLogro3" name="logro3"    placeholder="escribe el logro" required  data-parsley-length="[3, 200]" data-parsley-trigger="keyup">{{ $listaLogros->logro3 }}</textarea>
+                    <textarea class="form-control form-control-sm " id="inputLogro3" name="logro3"    placeholder="escribe el logro" required  data-parsley-length="[3, 135]" data-parsley-trigger="keyup">{{ $listaLogros->logro3 }}</textarea>
                     {!!$errors->first('logro3','<span class=error>:message</span>')!!}
                 </div>
                 <div class="form-group ">
                     <label class="asterisko"> logro4</label>
-                    <textarea class="form-control form-control-sm " id="inputLogro4" name="logro4"    placeholder="escribe el logro" required  data-parsley-length="[3, 200]" data-parsley-trigger="keyup">{{ $listaLogros->logro4 }}</textarea>
+                    <textarea class="form-control form-control-sm " id="inputLogro4" name="logro4"    placeholder="escribe el logro" required  data-parsley-length="[3, 135]" data-parsley-trigger="keyup">{{ $listaLogros->logro4 }}</textarea>
                     {!!$errors->first('logro4','<span class=error>:message</span>')!!}
                 </div>
                 <!-- <div class="form-group ">
