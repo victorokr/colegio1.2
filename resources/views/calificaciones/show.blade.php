@@ -80,9 +80,9 @@
 
         html {
             /* margin: 0; */
-
+            /* margenes todo el documento */
             /* primero=arriba, segundo=lado derecho, tercero=abajo, cuarto=lado izquierdo */
-            margin: 0.2cm 0.2cm 0.1cm 1.8cm;
+            margin: 0.1cm 1.5cm 0.1cm 0.2cm;
             font-family: verdana;
 
         }
@@ -94,7 +94,7 @@
             font-size: 10px;
             margin: 27mm 4mm 6mm 4mm;
             background-color: #F3F3F6;
-
+           
 
             
         }
@@ -123,46 +123,20 @@
         footer {
             position: absolute;
             bottom: 0cm;
-            left: 0cm;
-            right: 0cm;
-            height: 6em;
+            left: 0.4cm;
+            right: 0.4cm;
+            height: 5em;
             background-color: #ffffff;
+            border-radious: 35px 0px 35px 0px;
             border: 5px solid #DAE1E9;
             color: black;
+            padding: 0em;
             text-align: center;
-            /* line-height: 15px; */
+            line-height: 1em;
+            overflow: hidden;
         }
 
-        /* .cuadroHeader {
-            
-            position: absolute;
-            left: 3em;
-            top:  3em;
-            text-align: center;
-            background-color: #E2F8F6;
-
-           
-            font-size: 1em; 
-            width: 55em;
-            height: 6em;
-           
-            padding: 1em;
-            overflow: hidden;
-
-            line-height: 1em;
-            border-radious: 35px 0px 35px 0px; 
-            border: 5px solid #DAE1E9;
-         } */
-         /* .cuadroHeader2 .logoCol {
-            position: absolute;
-            left: 63em;
-            top:  0em;
-           
-            width: 7em;
-            height: 9em;
-           
-            
-         } */
+      
         
         .table{
             /* permite ewl salto de pagina de la tabla  position relative*/
@@ -170,6 +144,7 @@
             width: 100%;
             /* border:2px solid #999999; */
             border-collapse: collapse;
+            /* border: 1px solid #ddd; */
             /* left: 3em; */
             /* top:  12em; */
             /* margin-top: 2em; */
@@ -177,16 +152,19 @@
             /* height: 100%; */
         }
 
-        .table td , .table th{
+        .table td , .table th {
             border: 1px solid #ddd;
             padding: 8px;
-           
+             
         }
 
+       
 
-        .table tr:nth-child(even){
+
+        /* .table tr:nth-child(even){
             background-color: #f2f2f2;
-        }
+           
+        } */
 
         .table  tr:hover {
             background-color: #ddd;
@@ -224,12 +202,14 @@
             /* border: 1px solid #ddd; */
 
         }
+       
 
         /* lista sin viñetas */
         .table ul{
             list-style-type: none;
             margin: 0;
             padding: 0;
+            /* border: 1px solid #ddd; */
         }
 
         /* informacion colegio y alumno */
@@ -326,6 +306,147 @@
             
             float: left; 
         }
+        .observaciones{
+           
+           /* padding: 6px;  */
+           /* padding: 28.5px; */
+           /* padding-top: 50px; */
+           /* padding-right: 56px;
+           padding-left: 52px; */
+           /* margin-top: 5em; */
+           margin-left: 1em;
+           border-top: 1px solid #ddd;
+           
+           /* float: left;  */
+       }
+
+        .container{
+            position: relative;
+            text-align: center;
+        }
+
+         .firmaDirector{
+           
+             /* padding: 6px;  */
+             padding: 0px;
+            padding-top: 0px;
+            margin-top: 5px;
+            margin-left: -175px;
+            margin-right: 0px;
+            /* padding-right: 50px; */
+            padding-left: 0px;
+            /* margin-top: 5em; */
+            position: relative;
+            /* border: 1px solid #808080; */
+            border-radius: 1px 1px;
+            /* border-top: 1px solid; */
+            
+            float: left; 
+        }
+        .firmaRector{
+           
+            /* padding: 6px;  */
+            padding: 0px;
+            padding-top: 0px;
+            margin-top: 5px;
+            margin-left: 0px;
+            margin-right: 0px;
+            padding-right: 0px;
+            /* padding-left: 50px; */
+            /* margin-top: 5em; */
+            position: relative;
+            /* border: 1px solid #808080; */
+            border-radius: 1px 1px;
+            /* border-top: 1px solid; */
+            
+            float: left; 
+        }
+
+        .textoFirma{
+           
+           /* padding: 6px;  */
+           padding: 0px;
+           padding-top: 38px;
+           top: -5px;
+           padding-right: 0px;
+           margin-top: 0em;
+           margin-left: 0px;
+           /* padding-right: 50px;
+           padding-left: 50px; */
+           /* margin-top: 5em; */
+           width: 15em;
+           height: 1em;
+           position: absolute;
+           border: 1px solid #808080;
+           border-radius: 1px 1px;
+           /* border-top: 1px solid; */
+           
+           float: left; 
+       }
+
+        .nombreFirmaDirector{
+            /* border: 1px solid #808080;
+            border-radius: 1px 1px; */
+            padding: 0px; 
+            padding-top: 0px;
+            buttom: 0px;
+            margin-top: 10px;
+            position: absolute;
+
+            /* centra el nombre */
+            width: 15em;
+            height: 15em;
+            margin-buttom: 0px;
+            margin-left: 0px;
+           
+            font: italic bold 10px/22px Georgia, serif;
+            /* font:italic small-caps bold 12px/30px Georgia, serif ; */
+            float:left;
+      
+        }
+
+        .imagenFirmaRector{
+            /* border: 1px solid #808080;
+            border-radius: 1px 1px; */
+            padding: 0px; 
+            padding-top: 0px;
+            buttom: 0px;
+            margin-top: -35px;
+            position: absolute;
+            width: 15em;
+            height: 15em;
+            margin-buttom: 0px;
+            margin-left: 25px;
+            
+            float:left;
+      
+        }
+
+    
+
+        
+        .notaF{
+         
+         margin-right: 0em; 
+         padding-bottom: 0px;
+         /* margin-top: 20px; */
+         border: 1px solid #808080;
+         border-radius: 1px 1px;
+         padding: 18.5px;
+         float: right; 
+       }
+        .promocion{
+         
+         margin-right: 0em; 
+         padding-bottom: 0px;
+         /* margin-top: 20px; */
+         border: 1px solid #808080;
+         border-radius: 1px 1px;
+         padding: 5px;
+         float: right; 
+       }
+
+
         .logoCol{
             border: 1px solid #808080;
             border-radius: 1px 1px;
@@ -345,11 +466,25 @@
              
         }
 
+        
+
         .csslogo{
             position: absolute;
             z-index: 1;
             float:right;
             margin-left: 0px;
+        }
+
+
+        .table{
+            /* background: rgba(0, 0, 0, 0.1); */
+            width: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            opacity: 0.1;
+            background-image: url("images/fondoboletin.png");
+            
         }
        
         
@@ -396,6 +531,12 @@
                   <div class="col">      
                     <div class="div11"> Jornada: {{ ($calificacionIdAlumno->curso->jornada)->jornada}}</div>
                   </div>
+                  <div class="col">      
+                    <div class="div11"> Director(a) de curso: {{ ($calificacionIdAlumno->curso->docente)->nombres}}</div>
+                  </div>
+                  <div class="col">      
+                    <div class="div11">  Boletin de Notas </div>
+                  </div>
                   
 
                 </div>   
@@ -404,16 +545,8 @@
 
          </div>        
 
-        
-  
-  <!-- </header> -->
-  
 
-  
-    
-    <!-- <div class="nombreAlumno">
-       {{($calificacionIdAlumno->alumno)->nombres}}
-    </div>     -->
+
    <main>
     <div class="page-break">
       <table class="table ">
@@ -423,14 +556,15 @@
                     <!-- <th>docente</th> -->
                     <th>Asignatura</th>
                     <th>Indicador de logro</th>
-                    <th>Nota</th>
+                    <th>Observación</th>
+                    <th>Calificación</th>
                     <th>Juicio</th>
-                    
+                   
                     <th>P1</th>
                     <th>P2</th>
                     <th>P3</th>
                     <th>P4</th>
-                    <th>Total</th>
+                    <th>PF</th>
             
                 </tr>
                 
@@ -439,91 +573,95 @@
                
                 
                    
-                    <!-- pasar whereIn('id',[1,2,3]) -->
+                    @php($count = 0)
+                  
                     @foreach($listaCalificacioPdf  as $listaCalificacion)
 
                          
                    
                     <tr>
-                    <!-- <td>{{ optional($listaCalificacion->alumno)    ->nombres }} </td> -->
-                    <!-- <td>{{ optional($listaCalificacion->docente)   ->nombres }} </td> -->
-                    <td>{{ optional($listaCalificacion->asignatura)->asignatura }} </td>
-                 
+                        <!-- <td>{{ optional($listaCalificacion->alumno)    ->nombres }} </td> -->
+                        <!-- <td>{{ optional($listaCalificacion->docente)   ->nombres }} </td> -->
+                        <td>{{ optional($listaCalificacion->asignatura)->asignatura }} </td>
+                    
 
-                    <td>
-                        <ul>
-                            <li>{{ optional($listaCalificacion->logro)->logro1 }}</li>
-                            <li>{{ optional($listaCalificacion->logro)->logro2 }}</li>
-                            <li>{{ optional($listaCalificacion->logro)->logro3 }}</li>
-                            <li>{{ optional($listaCalificacion->logro)->logro4 }}</li>
-                            <!-- <li>{{ optional($listaCalificacion->logro)->logro5 }}</li>
-                            <li>{{ optional($listaCalificacion->logro)->logro6 }}</li> -->
-                        </ul> 
-                    </td>
+                        <td>
+                            <ul>
+                                <li>1-{{ optional($listaCalificacion->logro)->logro1 }}</li>
+                                <li>2-{{ optional($listaCalificacion->logro)->logro2 }}</li>
+                                <li>3-{{ optional($listaCalificacion->logro)->logro3 }}</li>
+                                <li>4-{{ optional($listaCalificacion->logro)->logro4 }}</li>
+                                <!-- <li>{{ optional($listaCalificacion->logro)->logro5 }}</li>
+                                <li>{{ optional($listaCalificacion->logro)->logro6 }}</li> -->
+                            </ul> 
+                        </td>
+                        <td>{{ optional($listaCalificacion->observacion)->observaciones }}</td>
+                        <td>
+                            <ul>
+                                <li>(L1) {{ $listaCalificacion->nota1 }} </li>
+                                <li>(L2) {{ $listaCalificacion->nota2 }} </li>
+                                <li>(L3) {{ $listaCalificacion->nota3 }} </li>
+                                <li>(L4) {{ $listaCalificacion->nota4 }} </li>
+                                <!-- <li>{{ $listaCalificacion->nota5 }} </li>   
+                                <li>{{ $listaCalificacion->nota6 }} </li> -->
+                                
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                @php($filterOnlyNotes = $listaCalificacion->only(['nota1','nota2','nota3','nota4']))
+                                        @foreach($filterOnlyNotes as $value)
+                                            @if($value >= 3) 
+                                                <li>si</li>
+                                            @else
+                                                <li>no</li> 
+                                            @endif
+                                        @endforeach
+                            </ul>
+                        </td>
 
-                    <td>
-                        <ul>
-                            <li>{{ $listaCalificacion->nota1 }} </li>
-                            <li>{{ $listaCalificacion->nota2 }} </li>
-                            <li>{{ $listaCalificacion->nota3 }} </li>
-                            <li>{{ $listaCalificacion->nota4 }} </li>
-                            <!-- <li>{{ $listaCalificacion->nota5 }} </li>   
-                            <li>{{ $listaCalificacion->nota6 }} </li> -->
-                            
-                        </ul>
-                    </td>
-                    <td>
-                        <ul>
-                            @php($filterOnlyNotes = $listaCalificacion->only(['nota1','nota2','nota3','nota4']))
-                                    @foreach($filterOnlyNotes as $value)
-                                        @if($value >= 3) 
-                                            <li>si</li>
-                                        @else
-                                            <li>no</li> 
-                                        @endif
-                                    @endforeach
-                        </ul>
-                    </td>
-
-                    <td>
-                             
-                           {{ $listaCalificacion->promedio }}  
-                                    
-                    </td>
-
-                    <td>
-                            
-                    </td>
-
-                    <td>
                         
-                    </td>
+                        <td>{{ optional($listaCalificacion->promedio)->promediop1 }}</td>
+                        <td>{{ optional($listaCalificacion->promedio)->promediop2 }}</td>
+                        <td>{{ optional($listaCalificacion->promedio)->promediop3 }}</td>
+                        <td>{{ optional($listaCalificacion->promedio)->promediop4 }}</td>
+                        @php($numeroFormateado = bcdiv(($listaCalificacion->promedio)->promediototal,'1','1'))
+                        @if($calificacionIdAlumno->id_periodo == 4)
+                        <td>{{ $numeroFormateado }}</td>
+                        @else
+                        <td></td>
+                        @endif
+                       
 
-                    <td>
-                          
-                    </td>
-
-                    <td>
-                        <ul>
-                            <!-- <li>{{ $listaCalificacion->promedio }}</li> -->
-                        </ul>
-                    </td>
-                    <!-- <td>{{ $listaCalificacion->promedio }} </td> -->
-                    <!-- <td>{{ optional($listaCalificacion->curso)     ->salon }} </td>
-                    <td>{{ optional($listaCalificacion->periodo)   ->id_periodo }} </td> -->
+                        @php($promedioAñoTodasLasMaterias[] = $numeroFormateado)
+                      
                     
                     </tr>
-
+                  
                     @endforeach
-
+                  
                    
+                    
+                    
 
 
 
-
-                    <tr>
-                   
-                    </tr>
+                        
+                            <div class="row observaciones">
+                                <div class="col">
+                                    <h4>observación general:</h4>
+                                </div>
+                            </div>
+                        
+                           
+                    
+                        
+                        @php($countColum = count($promedioAñoTodasLasMaterias))
+                        @php($calcularPromedio = array_sum($promedioAñoTodasLasMaterias)/$countColum)
+                        @php($numeroFormateado = bcdiv($calcularPromedio, '1','1'))
+                       
+                        
+                    
                
             
       </table>
@@ -531,10 +669,44 @@
    </main>
     
    <footer>
-       <div class="cuadrofooter">
-            <div class="footerfirma">Director(a) de grupo</div>
-       </div>
-     <h3>Boletin de notas</h3>
+        <div class="container">
+            <div class="row">
+                <div class="col firmaRector">
+                    <div><img class="imagenFirmaRector" src="images/rector3.png"></div>
+                    <div class="textoFirma">   Director(a) colegio</div>    
+                </div>
+                <div class="col firmaDirector"> 
+                    <div class="nombreFirmaDirector">{{ ($calificacionIdAlumno->curso->docente)->nombres}}</div>
+                    <div class="textoFirma">  Director(a) de grupo</div>
+                </div>
+                
+                
+              
+                
+        
+                @php($sumagrado = ($calificacionIdAlumno->grado)->id_grado)
+                @if($calificacionIdAlumno->id_periodo == 4 || $calificacionIdAlumno->id_grado == 11)
+                        <div class="col">
+                            <div class="promocion"><h4>El alumno(@): {{($calificacionIdAlumno->alumno)->nombres}}. {{ ($numeroFormateado >= 3)? "Aprobó el año lectivo y culminó sus estudios satisfactoriamente" : "No aprobó el año lectivo"}} </h4></div>
+                        </div>   
+                        <div class="col">      
+                            <div class="notaF">Nota Final: {{ $numeroFormateado }}</div>
+                        </div>
+                @else  
+                    @if($calificacionIdAlumno->id_periodo == 4)
+                        <div class="col">
+                            <div class="promocion"><h4>El alumno(@): {{($calificacionIdAlumno->alumno)->nombres}}. {{ ($numeroFormateado >= 3)? "Es" : "No es"}} promovido(a) al grado {{ $sumagrado+1 }}</h4></div>
+                        </div>
+                        <div class="col">      
+                            <div class="notaF">Nota Final: {{ $numeroFormateado }}</div>
+                        </div>  
+                    @else
+
+                    @endif
+                @endif
+
+            </div>   
+        </div>
    </footer>
   
 </body>

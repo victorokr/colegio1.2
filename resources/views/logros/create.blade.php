@@ -18,22 +18,22 @@
               <div class="card-body">  
                 <div class="form-group ">
                     <label class="asterisko"> logro uno</label>
-                    <textarea class="form-control form-control-sm " id="inputLogro1" name="logro1"  value="{{ old('logro1') }}"  placeholder="escribe el logro 1" required  data-parsley-length="[3, 135]" data-parsley-trigger="keyup"></textarea>
+                    <textarea class="form-control form-control-sm " id="inputLogro1" name="logro1"  value="{{ old('logro1') }}"  placeholder="escribe el logro 1" required  data-parsley-length="[3, 110]" data-parsley-trigger="keyup"></textarea>
                     {!!$errors->first('logro1','<span class=error>:message</span>')!!}
                 </div>
                 <div class="form-group ">
                     <label class="asterisko"> logro dos</label>
-                    <textarea class="form-control form-control-sm " id="inputLogro2" name="logro2"  value="{{ old('logro2') }}"  placeholder="escribe el logro 2" required  data-parsley-length="[3, 135]" data-parsley-trigger="keyup"></textarea>
+                    <textarea class="form-control form-control-sm " id="inputLogro2" name="logro2"  value="{{ old('logro2') }}"  placeholder="escribe el logro 2" required  data-parsley-length="[3, 110]" data-parsley-trigger="keyup"></textarea>
                     {!!$errors->first('logro2','<span class=error>:message</span>')!!}
                 </div>
                 <div class="form-group ">
                     <label class="asterisko"> logro tres</label>
-                    <textarea class="form-control form-control-sm " id="inputLogro9" name="logro3"  value="{{ old('logro3') }}"  placeholder="escribe el logro 3" required  data-parsley-length="[3, 135]" data-parsley-trigger="keyup"></textarea>
+                    <textarea class="form-control form-control-sm " id="inputLogro9" name="logro3"  value="{{ old('logro3') }}"  placeholder="escribe el logro 3" required  data-parsley-length="[3, 110]" data-parsley-trigger="keyup"></textarea>
                     {!!$errors->first('logro3','<span class=error>:message</span>')!!}
                 </div>
                 <div class="form-group ">
                     <label class="asterisko"> logro cuatro</label>
-                    <textarea class="form-control form-control-sm " id="inputLogro4" name="logro4"  value="{{ old('logro4') }}"  placeholder="escribe el logro 4" required  data-parsley-length="[3, 135]" data-parsley-trigger="keyup"></textarea>
+                    <textarea class="form-control form-control-sm " id="inputLogro4" name="logro4"  value="{{ old('logro4') }}"  placeholder="escribe el logro 4" required  data-parsley-length="[3, 110]" data-parsley-trigger="keyup"></textarea>
                     {!!$errors->first('logro4','<span class=error>:message</span>')!!}
                 </div>
                 <!-- <div class="form-group ">

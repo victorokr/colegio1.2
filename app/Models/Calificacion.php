@@ -8,7 +8,7 @@ class Calificacion extends Model
 {
     protected $table = 'calificacion';
     protected $primaryKey = 'id_calificacion';
-    protected $fillable = ['nota1','nota2','nota3','nota4','id_asignatura','id_alumno','id_curso','id_periodo','id_docente','id_grado','id_logro','id_promedio'];
+    protected $fillable = ['nota1','nota2','nota3','nota4','id_asignatura','id_alumno','id_curso','id_periodo','id_docente','id_grado','id_logro','id_promedio','id_observacion'];
 
 
     public function asignatura()
@@ -46,17 +46,19 @@ class Calificacion extends Model
         return $this->belongsTo('App\Models\Promedio','id_promedio');
     }
 
-
-
-
-
-    
     public  function grado()
     {
-        return $this->belongsTo('App\Grado','id_grado');
+        return $this->belongsTo('App\Models\Grado','id_grado');
+    }
+    public  function observacion()
+    {
+        return $this->belongsTo('App\Models\Observacion','id_observacion');
     }
 
+
     
+
+
 
     public function scopeConsultaGrado($query, $grado)
     {

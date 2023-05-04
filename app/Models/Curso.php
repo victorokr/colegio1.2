@@ -8,7 +8,7 @@ class Curso extends Model
 {
     protected $table = 'curso';
     protected $primaryKey = 'id_curso';
-    protected $fillable = ['salon','id_sede','id_jornada'];
+    protected $fillable = ['salon','id_sede','id_jornada','id_docente'];
 
 
 
@@ -29,7 +29,10 @@ class Curso extends Model
         return $this->belongsTo('App\Models\Jornada','id_jornada');
     }
 
-
+    public function docente()
+    {
+        return $this->belongsTo('App\Models\Docente','id_docente');
+    }
 
 
 

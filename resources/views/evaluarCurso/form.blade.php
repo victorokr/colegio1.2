@@ -29,7 +29,11 @@
                                       <input type="text" class="form-control form-control-sm" id="inputNota6" name="nota6" value="{{ old('nota6') }}" required data-parsley-length="[1, 3]" data-parsley-pattern="/^[\d]{0,11}(\.[\d]{1,2})?$/" data-parsley-min="1" data-parsley-max="5" data-parsley-trigger="keyup" />
                                       {!!$errors->first('nota6','<span class=error>:message</span>')!!}
                                   </div> -->
-                                  
+                                  <div class="form-group">
+                                     <label class="asterisko">observacion</label>
+                                     <textarea class="form-control form-control-sm"  name="observacion" id="" value="{{ old('id_observacion') }}" required data-parsley-pattern="[a-zA-Z ]+$" data-parsley-length="[3, 81]" data-parsley-trigger="keyup"  / ></textarea>
+                                  </div>
+
 
                                   <input type="hidden" name="id_asignatura" 
                                   value="{{    Crypt::encrypt (request('idAsignatura')) }}" >

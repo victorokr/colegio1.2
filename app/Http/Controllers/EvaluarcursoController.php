@@ -21,6 +21,7 @@ use Illuminate\Validation\Rule;
 use Validator;
 use App\Models\Logro;
 use App\Models\Promedio;
+use App\Models\Observacion;
 
 
 class EvaluarcursoController extends Controller
@@ -56,16 +57,31 @@ class EvaluarcursoController extends Controller
                 else
                 {
 
-                
 
-            
+
                             if($docentee != Auth::user()->id_docente ){
-                                
+                                        
                                 Alert::toast('no puedes calificar este salon', 'error')->timerProgressBar();
                                 return redirect()->route('listado.index');
                                 
 
                             }
+
+
+                              //trae solo el id del logro, valida que existan logros para poder continuar
+                            $listaLogros = Logro::where('id_periodo' , $this->calcularPeriodo()) 
+                            ->where('id_docente', Auth::user()->id_docente)
+                            ->where('id_asignatura', $idAsignatura)->pluck('id_logro')->first();
+                            if(is_null($listaLogros)){
+
+                                Alert::info('Esta asignatura no tiene logros para este periodo, por favor crealos primero', 'sugerencia')->timerProgressBar();
+                                return redirect()->route('listado.index');
+                            }
+                           
+
+
+            
+                           
                             else{
 
                                 // dd($curso);
@@ -229,7 +245,8 @@ class EvaluarcursoController extends Controller
             $crearPromedio = new Promedio;
             $crearPromedio->promediop1    = $numeroFormateado;
             $crearPromedio->id_asignatura = $idAsignatura;
-            $crearPromedio->id_alumno     = $request->input('id_alumno');  
+            $crearPromedio->id_alumno     = $request->input('id_alumno');
+            $crearPromedio->id_grado      = $request->input('id_grado'); 
             $crearPromedio->save();
             //------------------------------------------------------------
 
@@ -260,7 +277,21 @@ class EvaluarcursoController extends Controller
         }
 
         //-----------------------------------------------------------------------------
-      
+         //create observacion
+         $createObservacion = new Observacion;
+         $createObservacion->observaciones = $request->input('observacion');
+         $createObservacion->id_asignatura = $idAsignatura;
+         $createObservacion->id_alumno     = $request->input('id_alumno');
+         $createObservacion->save();
+
+         $consultaIdObservacion = Observacion::where('id_asignatura','=', $idAsignatura)
+                                             ->where('id_alumno','=',$request->input('id_alumno'))
+                                             ->whereYear('created_at', $añoActual)
+                                             ->pluck('id_observacion')->first();
+
+        
+
+        //-------------------------------------------------------------------------------
         
         $idPromedio = Promedio::where('id_asignatura','=', $idAsignatura)
                                         ->where('id_alumno','=', $request->input('id_alumno'))
@@ -284,6 +315,7 @@ class EvaluarcursoController extends Controller
             "id_curso"      => ($idCurso),
             "id_periodo"    => $this->calcularPeriodo(),
             "id_promedio"   => ($idPromedio),
+            "id_observacion"=> ($consultaIdObservacion),
             "id_docente"    =>  Auth::user()->id_docente,
             "id_grado"      => $request->input('id_grado'),
 

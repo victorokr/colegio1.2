@@ -111,21 +111,11 @@ class CalificacionesController extends Controller
         
         //filtra por año todas las calificaciones del boletin
          $listaCalificacioPdf  = Calificacion::where('id_alumno','=',$calificacionIdAlumno->id_alumno )
-         ->where('id_periodo','=',1)
+         ->where('id_periodo','=',$calificacionIdAlumno->id_periodo)
          ->whereYear('created_at', $created_at)->get();
         //dd($listaCalificacioPdf);
 
-        $listaCalificacioPdf2  = Calificacion::where('id_alumno','=',$calificacionIdAlumno->id_alumno )
-         ->where('id_periodo','=',2)
-         ->whereYear('created_at', $created_at)->get();
-
-         $listaCalificacioPdf3  = Calificacion::where('id_alumno','=',$calificacionIdAlumno->id_alumno )
-         ->where('id_periodo','=',3)
-         ->whereYear('created_at', $created_at)->get();
-
-         $listaCalificacioPdf4  = Calificacion::where('id_alumno','=',$calificacionIdAlumno->id_alumno )
-         ->where('id_periodo','=',4)
-         ->whereYear('created_at', $created_at)->get();
+       
 
 
         // $todosLosPromedios = Calificacion::where('id_alumno','=',$calificacionIdAlumno->id_alumno )
@@ -152,9 +142,11 @@ class CalificacionesController extends Controller
 
         //$combined =  $collectionNotes->combine($collectionLogros);
      
-        $pdf = PDF::loadView('calificaciones.show', compact('calificacionIdAlumno','listaCalificacioPdf','listaCalificacioPdf2','listaCalificacioPdf3','listaCalificacioPdf4'))->setPaper('A4','landscape');
+        $pdf = PDF::loadView('calificaciones.show', compact('calificacionIdAlumno','listaCalificacioPdf'))->setPaper('A4','landscape');
 
-        return $pdf->stream('prueba.pdf');
+        return $pdf->download('boletin.pdf');
+        //stream abre el pdf en el navegador
+        //download descarga directa
     }
 
 

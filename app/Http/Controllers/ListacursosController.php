@@ -10,6 +10,7 @@ use Illuminate\Validation\Rule;
 
 use App\Models\Sede;
 use App\Models\Jornada;
+use App\Models\Docente;
 
 class ListacursosController extends Controller
 {
@@ -42,9 +43,10 @@ class ListacursosController extends Controller
      */
     public function create()
     {
-        $sedee   = Sede::pluck('sede','id_sede');
-        $jornadaa = Jornada::pluck('jornada','id_jornada');
-        return view('listaCursos.create', compact('sedee','jornadaa'));
+        $sedee            = Sede::pluck('sede','id_sede');
+        $jornadaa         = Jornada::pluck('jornada','id_jornada');
+        $directorDeCursoo = Docente::pluck('nombres','id_docente');
+        return view('listaCursos.create', compact('sedee','jornadaa','directorDeCursoo'));
     }
 
     /**
@@ -81,11 +83,12 @@ class ListacursosController extends Controller
      */
     public function edit($id)
     { 
-        $sedee    = Sede::pluck('sede','id_sede');
-        $jornadaa = Jornada::pluck('jornada','id_jornada');
+        $sedee            = Sede::pluck('sede','id_sede');
+        $jornadaa         = Jornada::pluck('jornada','id_jornada');
+        $directorDeCursoo = Docente::pluck('nombres','id_docente');
 
         $listaCursos    = Curso::findOrFail($id);
-        return view('listaCursos.edit', compact('listaCursos','sedee','jornadaa'));
+        return view('listaCursos.edit', compact('listaCursos','sedee','jornadaa','directorDeCursoo'));
     }
 
     /**

@@ -35,7 +35,7 @@
                 <th scope="col">Cursos</th>
                 <th scope="col">Sede</th>
                 <th scope="col">Jornada</th>
-                
+                <th scope="col">Director(a) de curso</th>
                 
                 </tr>
             </thead>
@@ -56,6 +56,7 @@
                     <td>{{ $listaCurso->salon }} </td>
                     <td>{{ optional($listaCurso->sede)->sede }} </td>
                     <td>{{ optional($listaCurso->jornada)->jornada }} </td>
+                    <td>{{ optional($listaCurso->docente)->nombres }} </td>
                     
                     @empty
 					          <div class="alert alert-info">No se encontraron resultados en nuestros registros</div>

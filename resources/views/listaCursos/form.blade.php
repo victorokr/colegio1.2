@@ -26,7 +26,30 @@
                             @endforeach
                     </select>
                 </div>
-                  
+                <div class="form-group ">
+                    <label class="asterisko">Director(a) de grupo</label>
+                        <select id="nacimiento" class="variable form-control form-control-sm"  name="id_docente" required data-parsley-required data-parsley-trigger="keyup">
+                            <option value="" selected></option>
+                            @foreach ($directorDeCursoo  as $director => $Director)
+                                <option value="{{ $director }}" {{ old('id_docente' ,$listaCursos->id_docente)== $director ? 'selected':'' }} > {{$Director }} </option>
+                                {!!$errors->first('id_docente','<span class=error>:message</span>')!!}
+                            @endforeach
+                        </select>
+                        <script type="text/javascript" >
+				  		  	$(document).ready(function() {
+
+    						$('.variable').select2();
+                            $("#mySelect").select2();
+
+    						$(".variable").select2({
+                            //maximumSelectionLength: 2,
+                            theme: "classic"							  
+                            });
+                            
+
+							});
+				  		  </script>
+                </div>  
                
                 <button type="submit" class="btn btn-success btn-sm btn-block mt-4">Actualizar Curso</button>
 

@@ -118,28 +118,31 @@
           
           <div class="table-responsive">
                
-            <table  class="table table-sm table-hover table-striped  mt-2">
+            <table  class="table table-sm table-hover  table-bordered  mt-2">
             <caption> Calificaciones</caption>
-            <thead >
+            <thead class="thead-light">
                 <tr>
-                  <th scope="col">Acciones</th>
-                  
-                  <th scope="col">l1</th>
-                  <th scope="col">l2</th>
-                  <th scope="col">l3</th>
-                  <th scope="col">l4</th>
+                  <th rowspan="2">Acciones</th>
+                  <th rowspan="2">alumno</th>
+                  <th rowspan="2">l1</th>
+                  <th rowspan="2">l2</th>
+                  <th rowspan="2">l3</th>
+                  <th rowspan="2">l4</th>
                   <!-- <th scope="col">logro5</th>
                   <th scope="col">logro6</th> -->
-                  <th scope="col">prom</th>
-                  <th scope="col">asignatura</th>
-                  <th scope="col">alumno</th>
-                  <th scope="col">curso</th>
-                  <th scope="col">periodo</th>
-                  <th scope="col">año</th>
-                  
-                  <th scope="col"><input type="checkbox" class=" ml-1"  data-tippy-content="Seleccionar todo" id="checkAll" ></th>
-                  
-                
+                  <th colspan="4" class="text-center">Prom periodo</th>
+                  <th rowspan="2">asignatura</th>
+                  <th rowspan="2">curso</th>
+                  <th rowspan="2">Notas Periodo</th>
+                  <th rowspan="2">año</th>
+                  <th rowspan="2"><input type="checkbox" class=" ml-1"  data-tippy-content="Seleccionar todo" id="checkAll" ></th>
+                </tr>
+
+                <tr>
+                  <th scope="col">p1</th>
+                  <th scope="col">p2</th>
+                  <th scope="col">p3</th>
+                  <th scope="col">p4</th>
                 </tr>
             </thead>
               <tbody>
@@ -167,15 +170,20 @@
                       </div>
                     </td> 
                     
+                    <td>{{ optional($listaCalificacion->alumno)    ->nombres }} </td>
                     <td>{{ $listaCalificacion->nota1 }} </td>
                     <td>{{ $listaCalificacion->nota2 }} </td>
                     <td>{{ $listaCalificacion->nota3 }} </td>
                     <td>{{ $listaCalificacion->nota4 }} </td>
                     <!-- <td>{{ $listaCalificacion->nota5 }} </td>
                     <td>{{ $listaCalificacion->nota6 }} </td> -->
-                    <td>{{ $listaCalificacion->promedio }} </td>
+                    <td>{{ optional($listaCalificacion->promedio)->promediop1 }} </td>
+                    <td>{{ optional($listaCalificacion->promedio)->promediop2 }} </td>
+                    <td>{{ optional($listaCalificacion->promedio)->promediop3 }} </td>
+                    <td>{{ optional($listaCalificacion->promedio)->promediop4 }} </td>
+
                     <td>{{ optional($listaCalificacion->asignatura)->asignatura }} </td>
-                    <td>{{ optional($listaCalificacion->alumno)    ->nombres }} </td>
+                   
                     <td>{{ optional($listaCalificacion->curso)     ->salon }} </td>
                     <td>{{ optional($listaCalificacion->periodo)   ->id_periodo }} </td>
                     <td>{{ $listaCalificacion->created_at->year }} </td>
