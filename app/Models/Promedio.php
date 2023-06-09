@@ -20,6 +20,32 @@ class Promedio extends Model
     {
         return $this->belongsTo('App\Models\Alumno','id_alumno');
     }
+
+    public  function grado()
+    {
+        return $this->belongsTo('App\Models\Grado','id_grado');
+    }
+
+
+
+
+
+
+    public function scopeConsultaAño($query, $año)
+    {
+    if($año)
+    return $query->where('created_at','LIKE',"%$año%");
+    }
+    
+
+
+    public function scopeConsultaAlumno($query, $alumno)
+    {
+        if($alumno)
+        return $query->whereHas("alumno", function ($query) use ($alumno){
+            $query->where('nombres','LIKE', "%$alumno%");
+        });
+    }
    
 
 

@@ -40,7 +40,7 @@ class ListalogrosController extends Controller
         ->consultaGrado($busquedaGrado)//consultaGrado es el nombre del metodo en el modelo, pero sin scope
         ->consultaPeriodo($busquedaPeriodo)
         ->consultaAsignatura($asignatura)
-        ->paginate(9);
+        ->paginate(15);
         return view('logros.index', compact('listaLogros','gradoo','periodoo','asignaturaa'));
     }
 

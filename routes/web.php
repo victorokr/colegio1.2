@@ -20,6 +20,7 @@ use App\Http\Controllers\EvaluarcursoController;
 use App\Http\Controllers\PeriodoController;
 use App\Http\Controllers\CalificacionesController;
 use App\Http\Controllers\PromedioController;
+use App\Http\Controllers\ListaobservacionesController;
 
 
 
@@ -85,3 +86,4 @@ Route::resource('calificaciones', CalificacionesController::class);
 Route::get('/downloadPDF/{id}', [CalificacionesController::class, 'downloadPDF'])->name('downloadPDF');
 
 Route::resource('promedio', PromedioController::class);
+Route::resource('lista/observaciones', ListaobservacionesController::class);

@@ -108,9 +108,9 @@
                     <button type="submit" class="btn btn-primary mt-3 ml-0 mr-0 " data-tippy-content="Buscar"><i class="fas fa-search"></i></button>
                     <a href="{{ url('calificaciones') }}"   class="btn btn-light mt-3 ml-0 "data-tippy-content="restablecer"><i class="fas fa-reply"></i></a>
                 </div>
-                <div class="col-sm">
+                <!-- <div class="col-sm">
                 <a href="#" class="btn btn-danger mt-4 ml-0 mr-2 btn-sm"  data-toggle="modal" data-tippy-content="eliminar notas seleccionadas" id="borrarTodoLoSeleccionado"  data-target="#delete"  style="float:right;" ><i class="fas fa-trash-alt"></i> </a>
-                </div>
+                </div> -->
             </div>
           
           </form>
@@ -135,7 +135,7 @@
                   <th rowspan="2">curso</th>
                   <th rowspan="2">Notas Periodo</th>
                   <th rowspan="2">año</th>
-                  <th rowspan="2"><input type="checkbox" class=" ml-1"  data-tippy-content="Seleccionar todo" id="checkAll" ></th>
+                  <!-- <th rowspan="2"><input type="checkbox" class=" ml-1"  data-tippy-content="Seleccionar todo" id="checkAll" ></th> -->
                 </tr>
 
                 <tr>
@@ -188,9 +188,10 @@
                     <td>{{ optional($listaCalificacion->periodo)   ->id_periodo }} </td>
                     <td>{{ $listaCalificacion->created_at->year }} </td>
                     <!-- <td>{{ optional($listaCalificacion->docente)   ->nombres }} </td> -->
-                    <div class="btn-group ml-1" role="group" aria-label="Third group">
+
+                    <!-- <div class="btn-group ml-1" role="group" aria-label="Third group">
                      <td> <input type="checkbox" class="checkBoxClass  ml-1" data-tippy-content="Seleccionar" value="{{ $listaCalificacion->id_calificacion}}"  name="ids"  ></td>
-                    </div>
+                    </div> -->
                    
                     
                     @empty
@@ -248,7 +249,7 @@
           </div>
 
           {{-- modal delete --}}
-          <div class="modal" id="delete" tabindex="-1" role="dialog">
+          <!-- <div class="modal" id="delete" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
             <form action="" id="deleteForm" method="POST">
               <div class="modal-content">
@@ -271,8 +272,8 @@
                   </div>
               </div>
             </form>
-            </div>
-				           <script type="text/javascript">
+          </div> -->
+				           <!-- <script type="text/javascript">
                         //checkbox select all
                         $(function(e){
                             $("#checkAll").click(function(){
@@ -313,12 +314,10 @@
 
                           }
 
-						       </script>
+						       </script> -->
 			    </div>  
           
-           <script>
-              
-           </script>      
+                
 			    
 
            

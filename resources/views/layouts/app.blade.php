@@ -223,37 +223,32 @@
                             <li><a href="{{url('calificaciones')}}">Ver Calificaciones</a></li> 
                         </ul>
                     </li>
+                    <li><a href="#"><i class="icono izquierda far fa-eye"></i> Observaciones <i class="icono derecha fas fa-chevron-down"></i></a>
+                        <ul>
+                            <li><a href="{{url('lista/observaciones')}}">Ver Observaciones</a></li> 
+                        </ul>
+                    </li>
+                    <li><a href="#"><i class="icono izquierda fas fa-percent"></i> Promedios <i class="icono derecha fas fa-chevron-down"></i></a>
+                        <ul>
+                            <li><a href="{{url('promedio')}}">Ver Promedios</a></li> 
+                        </ul>
+                    </li>
 
                     
-                    <li><a href="#"><i class="icono izquierda fas fa-cloud-upload-alt"></i> Cargar Calificaciones <i class="icono derecha fas fa-chevron-down"></i></a>
+                    <!-- <li><a href="#"><i class="icono izquierda fas fa-cloud-upload-alt"></i> Cargar Calificaciones <i class="icono derecha fas fa-chevron-down"></i></a>
                         <ul>
                             <li><a href="#">Cargar Calificaciones</a>
                             
                         </ul> 
-                    </li>
+                    </li> -->
                    
-                    <li><a href="#"><i class="icono izquierda fas fa-book-reader"></i> Item <i class="icono derecha fas fa-chevron-down"></i></a>
+                    <!-- <li><a href="#"><i class="icono izquierda fas fa-book-reader"></i> Item <i class="icono derecha fas fa-chevron-down"></i></a>
                         <ul>
                             <li><a href="#">Item 1</a>
                             
                         </ul>
-                    </li>
-                    <li><a href="#"><i class="icono izquierda fas fa-book"></i> Item<i class="icono derecha fas fa-chevron-down"></i></a>
-                        <ul>
-                            <li><a href="#">Item 1</a>
-                            
-                        </ul>
-                    </li>
-                    
-                    <li><a href="#"><i class="icono izquierda fas fa-box-open"></i>Item <i class="icono derecha fas fa-chevron-down"></i></a>
-                        <ul>
-                            <li><a href="#">Item 1 </a>
-                                
-                            {{-- <li><a href="#">Registrar Entradas</a>
-                            <li><a href="#">Registrar Traslados</a> --}}    
-                        </ul>
-
-                    </li>
+                    </li> -->
+                   
                     @endif            
 
                     

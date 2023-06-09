@@ -69,6 +69,7 @@ class PeriodoController extends Controller
         return view('periodo.edit', compact('periodo'));
     }
 
+
     /**
      * Update the specified resource in storage.
      *
@@ -78,12 +79,77 @@ class PeriodoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //return $request->all();
+
+        //eturn $request->all();
         $periodo = Periodo::findOrFail($id);
+        //dd($periodo);
+        $añoActual     = date('Y');
+        $fechainicioo  = Periodo::pluck('fechainicio')->toArray();
+        $fechafinn     = Periodo::pluck('fechafin')->toArray();
+
          
-        $periodo->update($request->all());
-        Alert::toast('periodo actualizado correctamente', 'success')->timerProgressBar();
-        return redirect()->route('periodo.index');
+            switch ($periodo->id_periodo) {
+                case "1":
+                        if( ($request->input('fechainicio')) > ($fechafinn[0]) or ($request->input('fechafin')) < ($fechainicioo[0]) ){
+                            Alert::error('UPS ', 'Rango de fecha no valido ')->timerProgressBar();
+                            return back();
+                        }
+                       
+                        if( ($request->input('fechafin')) > ($fechainicioo[1]) ){
+                            Alert::error('UPS ', 'No se puede poner la fecha fin del primer periodo, superior a la fecha de inicio del segundo periodo')->timerProgressBar();
+                            return back();
+                        }else{
+                            $periodo->update($request->all());
+                            Alert::toast('Periodo 1 actualizado correctamente', 'success')->timerProgressBar();
+                            return redirect()->route('periodo.index');
+                        }
+                    break;
+                      
+                case "2":
+                        if( ($request->input('fechainicio')) > ($fechafinn[1]) or ($request->input('fechafin')) < ($fechainicioo[1]) ){
+                            Alert::error('UPS ', 'Rango de fecha no valido ')->timerProgressBar();
+                            return back();
+                        }
+                    
+                        if( ($request->input('fechafin')) > ($fechainicioo[2]) ){
+                            Alert::error('UPS ', 'No se puede poner la fecha fin del segundo periodo, superior a la fecha de inicio del tercer periodo')->timerProgressBar();
+                            return back();
+                        }else{
+                            $periodo->update($request->all());
+                            Alert::toast('Periodo 2 actualizado correctamente', 'success')->timerProgressBar();
+                            return redirect()->route('periodo.index');
+                        }
+                    break;
+    
+                case "3":
+                        if( ($request->input('fechainicio')) > ($fechafinn[2]) or ($request->input('fechafin')) < ($fechainicioo[2]) ){
+                            Alert::error('UPS ', 'Rango de fecha no valido ')->timerProgressBar();
+                            return back();
+                        }
+                    
+                        if( ($request->input('fechafin')) > ($fechainicioo[3]) ){
+                            Alert::error('UPS ', 'No se puede poner la fecha fin del tercer periodo, superior a la fecha de inicio del cuarto periodo')->timerProgressBar();
+                            return back();
+                        }else{
+                            $periodo->update($request->all());
+                            Alert::toast('Periodo 3 actualizado correctamente', 'success')->timerProgressBar();
+                            return redirect()->route('periodo.index');
+                        }
+                    break;
+                case "4":
+                        if( ($request->input('fechainicio')) > ($fechafinn[3]) or ($request->input('fechafin')) < ($fechainicioo[3]) ){
+                            Alert::error('UPS ', 'Rango de fecha no valido ')->timerProgressBar();
+                            return back();
+                        }else{
+                            $periodo->update($request->all());
+                            Alert::toast('Periodo 4 actualizado correctamente', 'success')->timerProgressBar();
+                            return redirect()->route('periodo.index');
+                        }
+                    break;    
+                }
+                
+
+       
     }
 
     /**

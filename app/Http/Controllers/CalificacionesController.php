@@ -15,6 +15,7 @@ use App\Carbon;
 use Barryvdh\DomPDF\Facade;
 use PDF;
 use DB;
+use App\Models\Promedio;
 
 
 class CalificacionesController extends Controller
@@ -180,7 +181,7 @@ class CalificacionesController extends Controller
     {
         //return $request->all();
         $calificacion = Calificacion::findOrFail($request->id_calificacion);
-
+        //dd($calificacion->id_periodo);
         $notas =  $request->all( 'nota1','nota2','nota3','nota4');
         $countColum = count($notas);
         $calcularPromedio = array_sum($notas)/$countColum;
@@ -195,8 +196,39 @@ class CalificacionesController extends Controller
             "nota4" => $request->input('nota4'),
             // "nota5" => $request->input('nota5'),
             // "nota6" => $request->input('nota6'),
-            "promedio"      => ($numeroFormateado),
+            //"promedio"      => ($numeroFormateado),
         ]);
+
+
+         //update average
+         switch ($calificacion->id_periodo) {
+            case "1":
+                  $promediop1 = Promedio::where('id_promedio','=', $calificacion->id_promedio)->first();
+                  $promediop1->promediop1 = $numeroFormateado;
+                  $promediop1->save();  
+                break;
+                  
+            case "2":
+                  $promediop2 = Promedio::where('id_promedio','=', $calificacion->id_promedio)>first();
+                  $promediop2->promediop2 = $numeroFormateado;
+                  $promediop2->save(); 
+                break;
+
+            case "3":
+                  $promediop3 = Promedio::where('id_promedio','=', $calificacion->id_promedio)>first();
+                  $promediop3->promediop3 = $numeroFormateado;
+                  $promediop3->save(); 
+                break;
+            case "4":
+                  $promediop4 = Promedio::where('id_promedio','=', $calificacion->id_promedio)>first();
+                  $promediop4->promediop4 = $numeroFormateado;
+                  $promediop4->save(); 
+                break;    
+            }
+
+
+
+
         Alert::toast('nota actualizada correctamente', 'success')->timerProgressBar();
         return redirect()->route('calificaciones.index');
     }
@@ -209,10 +241,10 @@ class CalificacionesController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-        $ids = $request->ids;
-        $calificacion = Calificacion::whereIn('id_calificacion',$ids);
-        $calificacion->delete();
-        Alert::toast('calificacion eliminada', 'success')->timerProgressBar();
-        return back();
+        // $ids = $request->ids;
+        // $calificacion = Calificacion::whereIn('id_calificacion',$ids);
+        // $calificacion->delete();
+        // Alert::toast('calificacion eliminada', 'success')->timerProgressBar();
+        // return back();
     }
 }

@@ -66,6 +66,13 @@ class EvaluarcursoController extends Controller
                                 
 
                             }
+                            
+                            //cierra la vista evaluar curso cada que termine un periodo academico en caso de tener dias que no pertenescan a algun periodo
+                            if($this->calcularPeriodo() === '0'){
+                                Alert::info('No puedes calificar hasta que comience el siguiente periodo académico', 'sugerencia')->timerProgressBar();
+                                return redirect()->route('listado.index');
+                            }
+
 
 
                               //trae solo el id del logro, valida que existan logros para poder continuar
@@ -78,9 +85,6 @@ class EvaluarcursoController extends Controller
                                 return redirect()->route('listado.index');
                             }
                            
-
-
-            
                            
                             else{
 
@@ -119,48 +123,35 @@ class EvaluarcursoController extends Controller
         //toArray convierte un objeto elocuent en un array plano
         $fechainicioo  = Periodo::pluck('fechainicio')->toArray();
         $fechafinn     = Periodo::pluck('fechafin')->toArray();
-
+        $fechahoy      = Carbon::now()->toDateString();//formatea, muestra solo la fecha sin la hora
+        //dd($fechahoy);
         
 
-        $fechahoy = Carbon::now();
-        
-
-        foreach($fechainicioo as $fechainicio){
-
-                if($fechahoy >= ($fechainicio[0]) && $fechahoy <= ($fechafinn[0]) )
-                return '1';
-
+                if( $fechahoy >= ($fechainicioo[0]) && $fechahoy <= ($fechafinn[0]) ){
+                    return '1';
+                }
+                else{
+                    if( $fechahoy >= ($fechainicioo[1]) && $fechahoy <= ($fechafinn[1]) ){
+                        return '2';
+                    }
+                    else{
+                        if( $fechahoy >= ($fechainicioo[2]) && $fechahoy <= ($fechafinn[2]) ){
+                            return '3';
+                        }
+                        else{
+                            if( $fechahoy >= ($fechainicioo[3]) && $fechahoy <= ($fechafinn[3]) ){
+                                return '4';
+                            }
+                            else{
+                                return '0';
+                            }
+                        } 
+                    }    
+                }
                 
-       
-                if($fechahoy >= ($fechainicio[1]) && $fechahoy <= ($fechafinn[1]) )
-                return '2';
-
-                
-                    
-                if($fechahoy >= ($fechainicio[2]) && $fechahoy <= ($fechafinn[2]) )
-                return '3';
-
-               
-                    
-                if($fechahoy >= ($fechainicio[3]) && $fechahoy <= ($fechafinn[3]) )
-                return '4';
-
-                
-
-        }
-
-
-
-
+                                  
 
     }
-
-
-
-
-
-
-
 
     /**
      * Store a newly created resource in storage.
