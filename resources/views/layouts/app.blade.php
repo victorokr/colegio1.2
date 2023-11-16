@@ -176,7 +176,11 @@
                             
                         </ul>
                     </li>
-
+                    <li><a href="#"><i class="icono izquierda fas fa-percent"></i> Promedios <i class="icono derecha fas fa-chevron-down"></i></a>
+                        <ul>
+                            <li><a href="{{url('promedio')}}">Ver Promedios</a></li> 
+                        </ul>
+                    </li>
 
                     @endif
 
@@ -228,11 +232,7 @@
                             <li><a href="{{url('lista/observaciones')}}">Ver Observaciones</a></li> 
                         </ul>
                     </li>
-                    <li><a href="#"><i class="icono izquierda fas fa-percent"></i> Promedios <i class="icono derecha fas fa-chevron-down"></i></a>
-                        <ul>
-                            <li><a href="{{url('promedio')}}">Ver Promedios</a></li> 
-                        </ul>
-                    </li>
+                    
 
                     
                     <!-- <li><a href="#"><i class="icono izquierda fas fa-cloud-upload-alt"></i> Cargar Calificaciones <i class="icono derecha fas fa-chevron-down"></i></a>

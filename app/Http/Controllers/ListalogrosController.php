@@ -72,12 +72,13 @@ class ListalogrosController extends Controller
         $validator = Validator::make($request->all(), [
             'id_periodo' =>['required',Rule::unique('logro')->where(function ($query) use ($request){
                 return $query->where('id_asignatura', $request->id_asignatura)
-                ->where('id_grado', $request->id_grado);
+                             ->where('id_grado', $request->id_grado);
                 
             })],
 
             'id_asignatura' =>['required',Rule::unique('logro')->where(function ($query) use ($request){
-                return $query->where('id_periodo', $request->id_periodo);
+                return $query->where('id_periodo', $request->id_periodo)
+                             ->where('id_grado', $request->id_grado);
                 
             })],
 
@@ -86,8 +87,9 @@ class ListalogrosController extends Controller
 
         if($validator->fails()){
 
-            Alert::error('ups ', 'los logros ya existen con esta asignatura, grado y periodo, intentalo de nuevo')->timerProgressBar();
-            return back();
+            Alert::error('ups ', 'los logros ya existen con esta asignatura, grado y periodo, corrige e intentalo de nuevo')->timerProgressBar();
+            return redirect()->route('logros.create')->withErrors($validator)
+                                            ->withInput();
         }
 
         
@@ -149,13 +151,13 @@ class ListalogrosController extends Controller
         $validator = Validator::make($request->all(), [
             'id_periodo' =>['required',Rule::unique('logro')->ignore($id,'id_logro')->where(function ($query) use ($request){
                 return $query->where('id_asignatura', $request->id_asignatura)
-                ->where('id_grado', $request->id_grado);
+                             ->where('id_grado', $request->id_grado);
                 
             })],
 
             'id_asignatura' =>['required',Rule::unique('logro')->ignore($id,'id_logro')->where(function ($query) use ($request){
-                return $query->where('id_periodo', $request->id_periodo);
-                
+                return $query->where('id_periodo', $request->id_periodo)
+                             ->where('id_grado', $request->id_grado);
             })],
 
         ]);

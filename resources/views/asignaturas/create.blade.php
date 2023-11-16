@@ -17,7 +17,7 @@
                     <div class="card-body">
                             <div class="form-group">
                                 <label class="asterisko"> asignatura</label>
-                                <input type="text" class="form-control form-control-sm" id="inputAsignatura" name="asignatura" value="{{ old('asignatura') }}" required data-parsley-pattern="[a-zA-Z ]+$" data-parsley-length="[3, 30]" data-parsley-trigger="keyup"  />
+                                <input type="text" class="form-control form-control-sm" id="inputAsignatura" name="asignatura" placeholder="ingresa el texto sin acentos" value="{{ old('asignatura') }}" required data-parsley-pattern="[a-zA-Z ]+$" data-parsley-length="[3, 30]" data-parsley-trigger="keyup"  />
                                 {!!$errors->first('asignatura','<span class=error>:message</span>')!!}
                             </div>
         

@@ -114,9 +114,9 @@ class ListaasignaturasController extends Controller
      */
     public function destroy($id)
     {
-        $listaAsignaturas = Asignatura::findOrFail($id);
-        $listaAsignaturas->delete();
-        Alert::toast('Asignatura eliminada', 'success')->timerProgressBar();
-        return back();
+        // $listaAsignaturas = Asignatura::findOrFail($id);
+        // $listaAsignaturas->delete();
+        // Alert::toast('Asignatura eliminada', 'success')->timerProgressBar();
+        // return back();
     }
 }

@@ -42,9 +42,9 @@
                 <tr>
                     <td>
                       <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                        <div class="btn-group mr-3" role="group" aria-label="First group">
+                        <!-- <div class="btn-group mr-3" role="group" aria-label="First group">
                             <button class="eliminar btn btn-danger btn-sm"  data-tippy-content="eliminar" data-toggle="modal" onclick="deleteData({{$listaAsignatura->id_asignatura}})" data-target="#delete"><i class="fas fa-trash-alt"></i></button>
-                        </div>
+                        </div> -->
                         <div class="btn-group mr-2" role="group" aria-label="Second group">
                             <a class="editar btn btn-info btn-sm" data-tippy-content="editar" href="{{ route('asignaturas.edit', $listaAsignatura->id_asignatura) }} "><i class="fas fa-edit"></i></a>
                         </div>
